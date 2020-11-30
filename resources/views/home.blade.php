@@ -9,6 +9,15 @@
 <!-- Main content -->
 <section class="content">
 <div class="container-fluid">
+    @if(
+    empty(auth()->user()->profile->name) ||
+    empty(auth()->user()->profile->kota_lahir) ||
+    empty(auth()->user()->profile->tgl_lahir) ||
+    empty(auth()->user()->profile->jk))
+    <div class="alert alert-danger" role="alert">
+    Silahkan Lengkapi Profile anda <a href="{{route('profile.edit',auth()->user()->profile->id)}}">Klik disini</a>
+    </div>
+    @endif
 	<div class="row">
 		<div class="col-xs-12 col-md-8">
             <div class="row">
@@ -28,7 +37,7 @@
 			<div class="panel bg-white p-3">
                 <div class="panel-body">
                     <div class='position-title header-text'>
-                        <a class="position-title-link" href="{{route('detail.lowongan-kerja',$post->slug)}}" target="_blank">
+                        <a class="position-title-link" href="{{route('detail.lowongan-kerja',$post->slug)}}">
                         <h2>{{ $post->title }}</h2></a>
                     </div>
                     <h3 class="company-name">

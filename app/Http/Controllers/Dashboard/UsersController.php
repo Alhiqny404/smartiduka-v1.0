@@ -57,6 +57,7 @@ class UsersController extends Controller
         $user->assignRole('user');
 
         $user->Profile()->save(new Profile);
+        $user->Uploads()->save(new Uploads);
 
         return redirect()->route('users.index');
     }

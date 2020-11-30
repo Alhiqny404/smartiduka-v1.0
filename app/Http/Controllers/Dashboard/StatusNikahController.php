@@ -59,7 +59,6 @@ class StatusNikahController extends Controller
         StatusNikah::updateOrCreate(['id' => $request->id],
                 [
                     'name' => $request->name,
-                    'slug' => Str::slug($request->name)
                 ]);        
    
         return response()->json(['success'=>'Book saved successfully.']);

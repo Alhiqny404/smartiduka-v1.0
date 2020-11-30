@@ -17,7 +17,7 @@
         <h3>Lowongan Kerja Disimpan</h3>
       </div>
       <div class="card-body">
-        <table class="table table-bordered table-hover table-sm table-striped" id="table-lamaran">
+        <table class="table table-hover table-sm table-striped" id="table-lamaran">
           <thead class="table-primary">
             <tr>
               <th>No</th>

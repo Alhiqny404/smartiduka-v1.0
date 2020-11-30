@@ -26,7 +26,6 @@
             <tr>
                 <th>No</th>
                 <th>Nama kualifikasi</th>
-                <th>Slug kualifikasi</th>
                 <th width="300px">Action</th>
             </tr>
           </thead>
@@ -122,7 +121,6 @@
         columns: [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
-            {data: 'slug', name: 'slug'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });

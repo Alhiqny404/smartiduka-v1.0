@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pelamar;
+use App\Models\Uploads;
 use App\Models\ProfileCompany;
 use DataTables;
 use Carbon\Carbon;
@@ -141,7 +142,8 @@ class PelamarController extends Controller
     public function detailPelamar($id)
     {
         $pelamar = Pelamar::find($id);
-        return view('company.detailPelamar',compact('pelamar'));
+        $lampiran = Uploads::where('user_id',$pelamar->user_id)->first();
+        return view('company.detailPelamar',compact('pelamar','lampiran'));
     }
 
     // KEPUTUSAN PERUSAHAAN MENERIMA ATAU TIDAK

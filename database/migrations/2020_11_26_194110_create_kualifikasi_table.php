@@ -16,7 +16,6 @@ class CreateKualifikasiTable extends Migration
         Schema::create('kualifikasi', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
             $table->timestamps();
         });
     }
