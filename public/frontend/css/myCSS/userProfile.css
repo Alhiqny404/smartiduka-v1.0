@@ -53,3 +53,15 @@
     font-size: 30px;
     color: white;
 }
+
+.bg-instagram{
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+} .bg-facebook{
+    background: #4064ac;
+} .bg-twitter{
+    background: #34b3f7;
+}.card-body i.fa-phone-alt{
+    background-color: #28a745;
+} .bg-google{
+    background-color: #dc3545;
+}

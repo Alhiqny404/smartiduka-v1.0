@@ -1,0 +1,36 @@
+.perusahaan-header, .perusahaan-body{
+    padding: 10px 20px;
+}
+h1{
+    line-height: 80px;
+    height: 100%;
+}
+
+.small-box{
+    background: #f09433; 
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+    overflow: hidden;
+} .card-body p{
+    margin-bottom: 5px;
+} .card-body i{
+    border-radius: 50%;
+    color: white;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    margin-right: 10px;
+} .card-body i.fa-instagram{
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+} .card-body i.fa-facebook-f{
+    background: #4064ac;
+} .card-body i.fa-twitter{
+    background: #34b3f7;
+} .card-body i.fa-phone-alt{
+    background-color: #28a745;
+} .card-body i.fa-envelope{
+    background-color: #dc3545;
+}

@@ -1,0 +1,12 @@
+.upload-container{
+    background-color: #fff;
+    box-shadow: 0 0 3px #333;
+}
+
+.upload-header, .upload-body{
+    
+    padding: 20px;
+}
+.upload-header h1{
+    text-transform: uppercase;
+}

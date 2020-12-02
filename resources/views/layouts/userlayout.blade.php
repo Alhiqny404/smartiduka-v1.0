@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="{{asset('frontend/css/myCSS/userProfile.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/myCSS/fontImport.css')}}">
 
-   <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="{{asset('AdminLte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
+    <!-- SweetAlert2 -->
+<link rel="stylesheet" href="{{asset('AdminLte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
 
   @yield('css')
 
@@ -90,16 +90,16 @@
    
                @role('user')
             <li class="nav-item">
-            <a href="{{route('home')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt text-danger"></i>
-              <p>
-                Home
-              </p>
-            </a>
-          </li>
+              <a href="{{route('home')}}" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Home
+                </p>
+              </a>
+            </li> 
           <li class="nav-item">
             <a href="{{url('/lamaran-saya')}}" class="nav-link">
-            <i class="nav-icon far fa-address-book text-success"></i>
+            <i class="nav-icon far fa-address-book"></i>
               <p>
                 lamaran saya
               </p>
@@ -107,7 +107,7 @@
           </li>
           <li class="nav-item">
             <a href="{{route('upload.index')}}" class="nav-link">
-            <i class="nav-icon fas fa-upload text-primary"></i>
+            <i class="nav-icon fas fa-upload"></i>
               <p>
                 Upload
               </p>
@@ -115,7 +115,7 @@
           </li>
           <li class="nav-item">
             <a href="{{route('loker.favorit')}}" class="nav-link">
-            <i class="nav-icon fas fa-book text-warning"></i>
+            <i class="nav-icon fas fa-book"></i>
               <p>
                 lowongan tersimpan
               </p>
@@ -123,7 +123,7 @@
           </li>
           <li class="nav-item">
             <a href="{{route('myinterview.index')}}" class="nav-link">
-            <i class="nav-icon far fa-sticky-note text-orange"></i>
+            <i class="nav-icon far fa-sticky-note"></i>
               <p>
                 undangan interview
               </p>
@@ -131,7 +131,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-            <i class="nav-icon far fa-comments text-purple"></i>
+            <i class="nav-icon far fa-comments"></i>
               <p>
                 Pesan
               </p>
@@ -141,7 +141,7 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cog text-light"></i>
+              <i class="nav-icon fas fa-cog"></i>
               <p>
                 Pengaturan
                 <i class="fas fa-angle-left right"></i>
@@ -150,13 +150,13 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{route('profile.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-user-tie nav-icon"></i>
                   <p>My Profile</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-user-circle nav-icon"></i>
                   <p>My Akun</p>
                 </a>
               </li>
@@ -166,7 +166,7 @@
                 class="nav-link"
                 onclick="event.preventDefault();
                document.getElementById('logout-form').submit();">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-sign-out-alt nav-icon"></i>
                   <p>Logout</p>
                 </a>
               </li>
@@ -260,6 +260,12 @@
 <script src="{{asset('AdminLte/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('AdminLte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
 <script src="{{asset('AdminLte/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+
+<script>
+  $(document).ready(function(){
+    $('#tooltip').tooltip();   
+});
+</script>
 
 @yield('js')
 </body>

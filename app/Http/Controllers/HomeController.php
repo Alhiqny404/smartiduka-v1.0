@@ -8,6 +8,7 @@ use App\Models\PostLoker;
 use App\Models\Pelamar;
 use App\Models\user;
 use App\Models\Kategori;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {

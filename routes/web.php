@@ -40,7 +40,7 @@ use App\Http\Middleware\CheckRole;
 Route::view('/','welcome')->middleware('guest');
 
 
-Auth::routes(['verify' => false,'register'=>false]);
+Auth::routes(['verify' => true,'register'=>false]);
 
 
 // ROUTE HALAMAN UTAMA SETELAH LOGIN

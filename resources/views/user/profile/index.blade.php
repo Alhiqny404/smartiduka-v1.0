@@ -13,42 +13,47 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md left">
-        <div class="general">
-          <div class="cardHeader bg-primary">
-            <img src="{{asset('frontend/img/user.png')}}" alt="">
-            <ul>
-              <li><h5>{{$profile->name}}</h5></li>
-              <li><p><i class="fas fa-medal"></i>{{$profile->pengalaman}}</p></li>
-            </ul>
-            <a class="edit" href="{{route('profile.edit',$profile->id)}}"><i class="fas fa-pen"></i></a>
-          </div>
+        <div class="card card-widget widget-user col-md-8 p-0">
+              <!-- Add the bg color to the header using any of the bg-* classes -->
+              <div class="widget-user-header bg-primary">
+                <h3 class="widget-user-username">{{$profile->name}}</h3>
+                <h5 class="widget-user-desc">{{$profile->pendidikan}}</h5>
+              </div>
+              <div class="widget-user-image">
+                <img class="img-circle elevation-2" src="{{asset('frontend/img/user.png')}}" alt="User Avatar">
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                  <div class="col-sm-4 border-right">
+                    <div class="description-block">
+                      <h5 class="description-header">Pengalaman</h5>
+                      <span class="description-text">{{$profile->pengalaman}}</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-4 border-right">
+                    <div class="description-block">
+                      <h5 class="description-header">Keahlian</h5>
+                      <span class="description-text">{{$profile->keahlian}}</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-4">
+                    <div class="description-block">
+                      <h5 class="description-header">Penghargaan</h5>
+                      <span class="description-text">{{$profile->penghargaan}}</span>
+                    </div>
+                    <!-- /.description-block -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+            </div>
 
-          <table class="table table-borderless">
-          <tr>
-              <td>Jenis Kelamin</td>
-              <td>:</td>
-              <td>{{$profile->jk}}</td>
-            </tr>
-            <tr>
-              <td>Tempat tanggal lahir</td>
-              <td>:</td>
-              <td>{{$profile->kota_lahir}}, {{$profile->tgl_lahir}}</td>
-            </tr>
-            <tr>
-              <td>Agama</td>
-              <td>:</td>
-              <td>{{$profile->agama}}</td>
-            </tr>
-            <tr>
-              <td>Status nikah</td>
-              <td>:</td>
-              <td>{{$profile->status_nikah}}</td>
-            </tr>
-          </table>
-        </div>
-
-        <div class="experience">
+        <!-- <div class="experience">
             
             <div class="row">
               <div class="col-md pendidikan">
@@ -100,19 +105,126 @@
               </div>
             </div>
           </div>
+        </div> -->
+
+
+      <div class="col-md-4">
+        <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Data Tambahan</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body" style="display: block;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Tinggi Badan : 
+                    <span class="badge badge-info badge-pill">{{$profile->tg_badan}}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Berat Badan :
+                    <span class="badge badge-info badge-pill">{{$profile->brt_badan}}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Status Pernikahan :
+                    <span class="badge badge-info badge-pill">{{$profile->status_nikah}}</span>
+                  </li>
+                </ul>
+              </div>
+              <!-- /.card-body -->
+            </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+      <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">BIODATA</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <!-- /.card-tools -->
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body" style="display: block;">
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Alamat : 
+                    <span class="badge-pill">{{$profile->alamat}}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Tempat Tanggal Lahir : 
+                    <span class="badge-pill">{{$profile->kota_lahir}}, {{$profile->tgl_lahir}}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Jenis Kelamin :
+                    <span class="badge-pill">{{$profile->jk}}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Agama :
+                    <span class="badge-pill">{{$profile->agama}}</span>
+                  </li>
+                </ul>
+              </div>
+              <!-- /.card-body -->
+            </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="info-box bg-facebook text-white">
+              <span class="info-box-icon"><i class="fab fa-facebook-f"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Facebook</span>
+                <span class="info-box-number">{{$profile->facebook}}</span>
+              </div>
+                <!-- /.info-box-content -->
+            </div>
+              
+            <div class="info-box bg-instagram text-white">
+              <span class="info-box-icon"><i class="fab fa-instagram"></i></span>
+
+                <div class="info-box-content">
+                  <span class="info-box-text">Instagram</span>
+                  <span class="info-box-number">{{$profile->instagram}}</span>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info-box bg-twitter text-white">
+              <span class="info-box-icon"><i class="fab fa-twitter"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Twitter</span>
+                <span class="info-box-number">{{$profile->twitter}}</span>
+              </div>
+            </div>
+        
+            <div class="info-box bg-google text-white">
+              <span class="info-box-icon"><i class="fab fa-google-plus-g"></i></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Gmail</span>
+                <span class="info-box-number"></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+          </div>
         </div>
-
-
-      <div class="col-md">
-        <h1>{{$profile->alamat}}</h1>
+        
       </div>
     </div>
   </div>
 
-
-
-
-
+            
   <!-- <a class="btn btn-primary" href="{{route('profile.edit',$profile->id)}}"><i class="fas fa-pen"></i></a> -->
 </div>
 <!-- /.container-fluid -->
