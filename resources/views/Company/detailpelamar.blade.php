@@ -27,15 +27,13 @@
 <div class="container-fluid">
   
 
-<a href="{{url('/management/perlamar')}}" class="btn btn-primary">Kembali</a>
 
 <div class="invoice p-3 mb-3">
               <!-- title row -->
               <div class="row">
-                <div class="col-12">
+                <div class="col-12 mb-3">
                   <h4>
-                    <i class="fas fa-globe"></i>Detail Pelamar
-                    <small class="float-right">Date: 2/10/2014</small>
+                    <i class="fas fa-globe"></i>  Detail Pelamar
                   </h4>
                 </div>
                 <!-- /.col -->
@@ -45,7 +43,7 @@
                 <div class="col invoice-col">
                   <address>
                     <strong>Data Pribadi</strong><br>
-                    <table>
+                    <table cellpadding="3">
                     	<tr>
                     		<td>Nama</td>
                     		<td>:</td>
@@ -97,7 +95,7 @@
                 <!-- /.col -->
                 <div class="col invoice-col">
                   <address>
-                  	<img src="{{url($pasfoto)}}" width="200px">
+                  	<img src="{{url($pasfoto)}}" width="200px" class="float-right">
                 </div>
                 
               </div>
@@ -115,8 +113,8 @@
                     <tbody>
                     	<tr>
                     		<td>1</td>
-                    		<td>CV</td>
-                    		<td><a href="{{$cv}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+                    		<td>Pas Foto</td>
+                    		<td><a href="{{$pasfoto}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
                     	</tr>
                     <tr>
                       <td>2</td>
@@ -138,6 +136,11 @@
                       <td>Ijazah Terakhir</td>
                       <td><a href="{{$ijazah}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
                     </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>CV</td>
+                        <td><a href="{{$cv}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -145,6 +148,7 @@
               </div>
               <!-- /.row -->
 
+<a href="{{url('/management/perlamar')}}" class="btn btn-primary">Kembali</a>
 
               {{--<!-- this row will not appear when printing -->
               <div class="row no-print">

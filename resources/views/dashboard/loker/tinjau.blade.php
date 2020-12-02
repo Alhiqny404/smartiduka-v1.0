@@ -5,9 +5,6 @@
 @section('nama_halaman','management Loker')
 
 @section('css')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -18,17 +15,19 @@
   
     {{$post}}
 
-    <form method="post" action="">
+    {{$post->user->email}}
+
+    <form method="post" action="" id="setujui">
       @csrf
       <input type="hidden" name="status" value="success">
-      <button class="btn btn-success" type="submit">Setujui</button>
     </form>
+      <button class="btn btn-success setujui" type="submit">Setujui</button>
     <br>
-    <form method="post" action="">
+    <form method="post" action="" id="tolak">
       @csrf
       <input type="hidden" name="status" value="failed">
-      <button class="btn btn-danger" type="submit">Tolak</button>
     </form>
+      <button class="btn btn-danger tolak" type="submit">Tolak</button>
 
 
 
@@ -47,13 +46,84 @@
 
 @section('js')
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-      
+<script type="text/javascript">
+
+ const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 4000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+});
 
 
+$('.setujui').click(function()
+{
+  var title = $(this).attr('title');
+  var text = $(this).attr('text');
+  var url = $(this).attr('url');
+  var nama = $(this).attr('nama');
+
+  Swal.fire({
+  title: "Setujui position",
+  text:"position ini akan terlihat dihalaman home user",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    $('#setujui').submit();
+  }
+});
+});
+
+
+
+$('.tolak').click(function()
+{
+  var title = $(this).attr('title');
+  var text = $(this).attr('text');
+  var url = $(this).attr('url');
+  var nama = $(this).attr('nama');
+
+  Swal.fire({
+  title: "Blokir position",
+  text:"position ini tidak akan tampil dihalaman home user",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    $('#tolak').submit();
+  }
+});
+});
+
+
+
+@if(Session::has('success'))
+  Toast.fire({
+  icon: 'success',
+  title: "{{Session('success')}}"
+  });
+@endif  
+
+
+$('.kosong').click(function() {
+      Toast.fire({
+    icon: 'warning',
+    title: 'Anda Belum Melampirkan Berkasnya'
+  });
+});
+
+</script>
 
 @endsection

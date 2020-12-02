@@ -98,7 +98,7 @@ class ProfileCompanyController extends Controller
             ]);
             
            
-        return redirect()->back();
+        return redirect()->back()->with('success','Profile Perusahaan berhasil diupdate');
     }
 
     /**

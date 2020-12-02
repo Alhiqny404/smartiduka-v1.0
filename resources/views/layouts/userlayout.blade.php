@@ -30,6 +30,14 @@
   <link rel="stylesheet" href="{{asset('AdminLte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('AdminLte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 
+  <!-- myCSS -->
+  <link rel="stylesheet" href="{{asset('frontend/css/myCSS/home.css')}}">
+  <link rel="stylesheet" href="{{asset('frontend/css/myCSS/userProfile.css')}}">
+  <link rel="stylesheet" href="{{asset('frontend/css/myCSS/fontImport.css')}}">
+
+   <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="{{asset('AdminLte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
+
   @yield('css')
 
 
@@ -38,7 +46,7 @@
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -51,7 +59,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4 bg-dark">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="{{asset('AdminLte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -61,7 +69,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex ">
         @role('user')
         <div class="image">
           <img src="{{auth()->user()->profile->foto()}}" class="img-circle elevation-2" alt="User Image">
@@ -83,7 +91,7 @@
                @role('user')
             <li class="nav-item">
             <a href="{{route('home')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-tachometer-alt text-danger"></i>
               <p>
                 Home
               </p>
@@ -91,7 +99,7 @@
           </li>
           <li class="nav-item">
             <a href="{{url('/lamaran-saya')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon far fa-address-book text-success"></i>
               <p>
                 lamaran saya
               </p>
@@ -99,7 +107,7 @@
           </li>
           <li class="nav-item">
             <a href="{{route('upload.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fas fa-upload text-primary"></i>
               <p>
                 Upload
               </p>
@@ -107,7 +115,7 @@
           </li>
           <li class="nav-item">
             <a href="{{route('loker.favorit')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fas fa-book text-warning"></i>
               <p>
                 lowongan tersimpan
               </p>
@@ -115,7 +123,7 @@
           </li>
           <li class="nav-item">
             <a href="{{route('myinterview.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon far fa-sticky-note text-orange"></i>
               <p>
                 undangan interview
               </p>
@@ -123,7 +131,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon far fa-comments text-purple"></i>
               <p>
                 Pesan
               </p>
@@ -133,7 +141,7 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cog"></i>
+              <i class="nav-icon fas fa-cog text-light"></i>
               <p>
                 Pengaturan
                 <i class="fas fa-angle-left right"></i>
@@ -190,7 +198,7 @@
 
     </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+  <footer class="main-footer bg-dark">
     <strong>Copyright &copy; 2020 <a href="https://adminlte.io">Smart iduka</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
@@ -251,6 +259,7 @@
 <script src="{{asset('AdminLte/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('AdminLte/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('AdminLte/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('AdminLte/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 
 @yield('js')
 </body>

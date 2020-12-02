@@ -32,7 +32,10 @@
               <td>{{$loop->iteration}}</td>
               <td>{{$lf->loker->user->profileCompany->name}}</td>
               <td>{{$lf->loker->title}}</td>
-              <td><a href="{{route('nonsimpan.loker',$lf->loker->id)}}" class="btn btn-danger btn-sm" onclick="confirm('Anda akan menghapus dari faftar lowongan kerja favorit?')"><i class="fas fa-times"></i></a></td>
+              <td>
+                <a class="btn btn-sm btn-info" href="{{route('detail.lowongan-kerja',$lf->loker->slug)}}"><i class="fas fa-eye"></i></a>
+                <a href="{{route('nonsimpan.loker',$lf->loker->id)}}" class="btn btn-danger btn-sm" onclick="confirm('Anda akan menghapus dari faftar lowongan kerja favorit?')"><i class="fas fa-times"></i></a>
+              </td>
             </tr>
             @endforeach
           </tbody>

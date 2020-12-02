@@ -35,6 +35,7 @@
           <td>{{$user->email}}</td>
           <td>{{$user->password}}</td>
           <td>
+            <a href="" class="btn btn-info btn-sm"><i class="fas fa-eye"></i></a>
             <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
             <a class="btn btn-danger btn-sm"
               onclick="event.preventDefault();
@@ -50,11 +51,6 @@
         </table>
       </div>
     </div>
-
-
-
-
-
 
 </div>
 <!-- /.container-fluid -->

@@ -88,6 +88,14 @@ class HomeController extends Controller
         return view('pages.detailloker',compact('post','pelamar'));
     }
 
+    public function detailLoker2($slug)
+    {
+        $post = PostLoker::where('slug',$slug)->first();
+        $pelamar = Pelamar::where('user_id',auth()->user()->id)->where('post_id',$post->id);
+        return view('pages.detailloker2',compact('post','pelamar'));
+    }
+
+
 
 
     public function lokerfilterkategori(Request $request)

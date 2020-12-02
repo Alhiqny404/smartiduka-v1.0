@@ -16,6 +16,7 @@
 <br>
 <br>
 
+
 @role('user')
 	@if($pelamar->count() > 0)
 		@if($pelamar->first()->status == 'success')
@@ -31,18 +32,18 @@
 
 	@if($pelamar->count() > 0)
 		@if($pelamar->first()->status == 'pending')
-			<a href="{{route('lowongan-kerja.hapus',$pelamar->first()->id)}}" class="btn btn-danger btn-sm">Batalkan Lamaran</a>
+			<a url="{{route('lowongan-kerja.hapus',$pelamar->first()->id)}}" title="Lamaran Akan Dibatalkan" text="Lamaran anda akan Dibatalkan" class="btn btn-danger btn-sm coba">Batalkan Lamaran</a>
 		@endif
 	@endif
 
 	@if($pelamar->count() <= 0)
-	<form method="POST" action="{{route('lowongan-kerja.melamar',$post->id)}}">
+	<form method="POST" action="{{route('lowongan-kerja.melamar',$post->id)}}" class="melamar">
 		@csrf
 		<input type="hidden" name="company_id" value="{{$post->user_id}}">
 		<input type="hidden" name="post_id" value="{{$post->user_id}}">
 		<input type="hidden" name="user_id" value="{{auth()->user()->id}}">
-		<button class="btn btn-primary" onclick="confirm(' Anda melamar pekerjaan {{$post->title}} \n yang diselenggarakan oleh {{$post->user->profileCompany->name}} \n Data riwayat hidup anda akan dikirim ke perusahaan terkait \n untuk menyesuaikan kualifikasi yang dibutuhkan perusahaan terkait. \n Tunggu informasi penerimaan dari perusahaan terkait!')">Lamar Sekarang</button>
 	</form>
+		<button class="btn btn-primary lamar" title="Mengirim lamaran Anda" text="Data diri dan lampiran anda akan dikirim ke perusahaan terkait">Lamar Sekarang</button>
 	@endif
 		<br>
 		@if(simpanloker($post->id)->count() == 0)
@@ -54,12 +55,90 @@
 </form>
 @endif
 @if(simpanloker($post->id)->count() > 0)
-<a href="{{route('nonsimpan.loker',$post->id)}}" class="btn btn-danger">Batal Simpan lowongan kerja ke favorit</a>
+<a url="{{route('nonsimpan.loker',$post->id)}}" class="btn btn-danger coba" title="menghapus dari daftar favorit" text="Postingan ini akan dihapus dari daftar favorit">Batal Simpan lowongan kerja ke favorit</a>
 
 @endif
 
-
 @endrole
+
+
+@endsection
+
+
+@section('js')
+
+<script type="text/javascript">
+	
+
+
+// SWAL DI KANAN ATAS
+const Toast = Swal.mixin({
+	toast: true,
+	position: 'top-end',
+	showConfirmButton: false,
+	timer: 4000,
+	timerProgressBar: true,
+	didOpen: (toast) => {
+	toast.addEventListener('mouseenter', Swal.stopTimer)
+	toast.addEventListener('mouseleave', Swal.resumeTimer)
+	}
+});
+
+
+
+@if(Session::has('success'))
+	Toast.fire({
+	icon: 'success',
+	title: "{{Session('success')}}"
+	});
+@endif
+
+
+
+$('.coba').click(function()
+{
+	var title = $(this).attr('title');
+	var text = $(this).attr('text');
+	var url = $(this).attr('url');
+
+	Swal.fire({
+  title: title,
+  text:text,
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+  	window.location = url;
+  }
+});
+});
+
+$('.lamar').click(function()
+{
+	var title = $(this).attr('title');
+	var text = $(this).attr('text');
+	var url = $(this).attr('url');
+
+	Swal.fire({
+  title: title,
+  text:text,
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+  	$('.melamar').submit();
+  }
+});
+});
+
+
+</script>
 
 
 @endsection

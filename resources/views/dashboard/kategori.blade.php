@@ -11,23 +11,18 @@
 <section class="content">
 <div class="container-fluid">
   
-
-
-   
-
 <div class="card mb-3 card-primary card-outline">
       <div class="card-header">
         <h3 class="card-title"><i class="fas fa-edit"></i> Data Kategori</h3>
       </div>
       <div class="card-body">
-        <a class="btn btn-sm btn-success mb-3" href="javascript:void(0)" id="createNewBook"> Tambahkan Kategori</a>
+        <a class="btn btn-sm btn-success mb-3" href="javascript:void(0)" id="tambahkategori"> Tambahkan Kategori</a>
         <table class="table table-bordered table-hover table-sm data-table table-striped">
           <thead class="table-primary">
             <tr>
                 <th>No</th>
                 <th>Nama Kategori</th>
-                <th>Slug Kategori</th>
-                <th width="300px">Action</th>
+                <th>Action</th>
             </tr>
           </thead>
         </table>
@@ -73,12 +68,6 @@
 </div>
     
 
-   
-
-
-
-
-
 
 </div>
 <!-- /.container-fluid -->
@@ -117,16 +106,14 @@
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        responsive: true,
         ajax: "{{ route('kategori.index') }}",
         columns: [
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
-            {data: 'slug', name: 'slug'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
-    $('#createNewBook').click(function () {
+    $('#tambahkategori').click(function () {
         $('#saveBtn').val("buat kategori");
         $('#id').val('');
         $('#kategoriform').trigger("reset");
@@ -136,8 +123,8 @@
     $('body').on('click', '.editBook', function () {
       var id = $(this).data('id');
       $.get("{{ route('kategori.index') }}" +'/' + id +'/edit', function (data) {
-          $('#modelHeading').html("Edit Book");
-          $('#saveBtn').val("edit-book");
+          $('#modelHeading').html("Edit kategori");
+          $('#saveBtn').val("Edit Kategori");
           $('#ajaxModel').modal('show');
           $('#id').val(data.id);
           $('#name').val(data.name);
@@ -169,9 +156,17 @@
     $('body').on('click', '.deleteBook', function () {
      
         var id = $(this).data("id");
-        confirm("Are You sure want to delete !");
-      
-        $.ajax({
+         Swal.fire({
+  title: "data akan dihapus",
+  text:"apakah anda yakin akan menghapusnya?",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+     $.ajax({
             type: "DELETE",
             url: "{{ route('kategori.store') }}"+'/'+id,
             success: function (data) {
@@ -181,6 +176,10 @@
                 console.log('Error:', data);
             }
         });
+  }
+});
+      
+       
     });
      
   });

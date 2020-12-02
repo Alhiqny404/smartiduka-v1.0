@@ -21,12 +21,12 @@ class SimpanLokerController extends Controller
     		'post_id' => $request->post_id,
     	]);
 
-    	return redirect()->back();
+    	return redirect()->back()->with('success','Posingan Berhasil Disimpan Dari daftar Favorit!');
     }
 
     public function destroy($post_id)
     {
     	Simpanloker::where('user_id',auth()->User()->id)->where('post_id',$post_id)->delete();
-    	return redirect()->back();
+    	return redirect()->back()->with('success','Posingan Sudah Dihapus Dari daftar Favorit!');
     }
 }

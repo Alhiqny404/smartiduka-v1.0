@@ -126,6 +126,6 @@ class PostLokerController extends Controller
     {
         PostLoker::where('slug',$slug)->delete();
      
-       return redirect()->back()->with('success','Data Berhasil Dihapus');
+       return redirect()->back()->with('success','Postingan Berhasil Dihapus');
     }
 }

@@ -18,7 +18,7 @@
       </div>
       <div class="card-body">
         <table class="table table-bordered table-hover table-sm data-table table-striped">
-         <thead>
+         <thead class="table-primary">
         <tr>
           <th>No</th>
           <th>Perusahaan</th>
@@ -104,8 +104,8 @@
             {data: 'id', name: 'id'},
             {data: 'company_name', name: 'company_name'},
             {data: 'title', name: 'title'},
-            {data: 'kategori_id', name: 'kategori_id'},
-            {data: 'created_at', name: 'created_at'},
+            {data: 'kategori', name: 'kategori'},
+            {data: 'waktu', name: 'waktu'},
             {data: 'status', name: 'status'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]

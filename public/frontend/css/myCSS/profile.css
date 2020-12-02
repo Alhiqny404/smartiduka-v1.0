@@ -1,0 +1,9 @@
+ .carousel {
+    height: 600px;
+    overflow: hidden;
+} 
+.carousel-inner .carousel-item:nth-child(1) img{
+    margin-top: -200px;
+} .carousel-inner .carousel-item:nth-child(2) img{
+    margin-top: -150px;
+}

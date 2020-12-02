@@ -16,12 +16,12 @@ class CreateUploadsTable extends Migration
         Schema::create('uploads', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->string('pasfoto');
-            $table->string('ktp');
-            $table->string('skck');
-            $table->string('skd');
-            $table->string('ijazah');
-            $table->string('cv');
+            $table->string('pasfoto')->nullable();
+            $table->string('ktp')->nullable();
+            $table->string('skck')->nullable();
+            $table->string('skd')->nullable();
+            $table->string('ijazah')->nullable();
+            $table->string('cv')->nullable();
             $table->timestamps();
         });
     }

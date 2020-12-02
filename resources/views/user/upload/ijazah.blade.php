@@ -2,7 +2,7 @@
 
 <form method="POST" action="{{route('ijazah.up',auth()->user()->id)}}" enctype="multipart/form-data">
 	@csrf
-	<input type="file" name="ijazah" value="{{$ijazah->ijazah}}">
+	<input type="file" required name="ijazah" value="{{$ijazah->ijazah}}">
 	<button type="submit">Upload</button>
 </form>
 

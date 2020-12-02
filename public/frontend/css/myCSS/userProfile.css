@@ -1,0 +1,55 @@
+.container{
+    width: 90%;
+} .left{
+}
+.general img{
+    width: 80px;
+    height: 80px;
+} .table tr td{
+    padding: 5px 10px;
+}
+
+
+
+.cardHeader{
+    display: flex;
+    padding: 10px 20px;
+    position: relative;
+} .cardHeader h5{
+    letter-spacing: 1px;
+    font-family: 'Alatsi', sans-serif;
+    margin-bottom: 0;
+    margin-top: 10px;
+    font-size: 25px;
+} .cardHeader ul{
+    list-style: none;
+} .cardHeader a.edit{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.col-md{
+    padding: 0;
+}
+
+.general, .experience{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+} 
+
+.experience{
+    width: 100%;
+} .experience h6{
+    font-size: 20px;
+} .experience .row{
+    padding-left: 10px;
+} .experience .icon{
+    background-color: #28a745;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} .experience .icon i{
+    font-size: 30px;
+    color: white;
+}

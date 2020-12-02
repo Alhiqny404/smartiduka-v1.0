@@ -34,7 +34,7 @@ class UploadsController extends Controller
 			Storage::putFileAs('public/cv',$request->file('cv'),time().'.'.$request->cv->extension());
 			Uploads::where('user_id',$id)->update(['cv'=>time().'.'.$request->cv->extension()]);
 		}
-		return 'Sukses';
+		return redirect()->route('upload.index')->with('success','Data Berhasil Dilampirkan');
 	}
 
 
@@ -58,7 +58,7 @@ class UploadsController extends Controller
 			Storage::putFileAs('public/ktp',$request->file('ktp'),time().'.'.$request->ktp->extension());
 			Uploads::where('user_id',$id)->update(['ktp'=>time().'.'.$request->ktp->extension()]);
 		}
-		return 'Sukses';
+		return redirect()->route('upload.index')->with('success','Data Berhasil Dilampirkan');
 	}
 
 
@@ -82,7 +82,7 @@ class UploadsController extends Controller
 			Storage::putFileAs('public/ijazah',$request->file('ijazah'),time().'.'.$request->ijazah->extension());
 			Uploads::where('user_id',$id)->update(['ijazah'=>time().'.'.$request->ijazah->extension()]);
 		}
-		return 'Sukses';
+		return redirect()->route('upload.index')->with('success','Data Berhasil Dilampirkan');
 	}
 
 
@@ -104,7 +104,7 @@ class UploadsController extends Controller
 			Storage::putFileAs('public/skck',$request->file('skck'),time().'.'.$request->skck->extension());
 			Uploads::where('user_id',$id)->update(['skck'=>time().'.'.$request->skck->extension()]);
 		}
-		return 'Sukses';
+		return redirect()->route('upload.index')->with('success','Data Berhasil Dilampirkan');
 	}
 
 
@@ -127,7 +127,7 @@ class UploadsController extends Controller
 			Storage::putFileAs('public/skd',$request->file('skd'),time().'.'.$request->skd->extension());
 			Uploads::where('user_id',$id)->update(['skd'=>time().'.'.$request->skd->extension()]);
 		}
-		return 'Sukses';
+		return redirect()->route('upload.index')->with('success','Data Berhasil Dilampirkan');
 	}
 
 
@@ -153,7 +153,7 @@ class UploadsController extends Controller
 			Storage::putFileAs('public/pasfoto',$request->file('pasfoto'),time().'.'.$request->pasfoto->extension());
 			Uploads::where('user_id',$id)->update(['pasfoto'=>time().'.'.$request->pasfoto->extension()]);
 		}
-		return 'Sukses';
+		return redirect()->route('upload.index')->with('success','Data Berhasil Dilampirkan');
 	}
 
 

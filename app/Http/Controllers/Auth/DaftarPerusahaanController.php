@@ -18,95 +18,35 @@ use Illuminate\Auth\Events\Verified;
 
 class DaftarPerusahaanController extends Controller
 {
- //    public function __construct()
- //    {
- //        $this->middleware('guest');
- //    }
-
-
- //    public function showRegistrationForm()
- //    {
- //        return view('auth.register');
- //    }
-
- //    protected function guard()
- //    {
- //        return Auth::guard();
- //    }
-
-
-
- //    public function register(Request $request)
-	// {
-	//       $request->validate([
-	//         'username' => ['required', 'string', 'min:6', 'max:255', 'unique:users'],
-	//         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-	//         'password' => ['required', 'string', 'min:8', 'confirmed'],
-	//       ]);
-
-	//       $user = User::create([
-	//         'username' => $request->username,
-	//         'email' => $request->email,
-	//         'password' => Hash::make($request->password),
-	//         ]);
-	    
-	//     $user->assignRole('company');
-	    
-	//     $user->profileCompany()->save(new profileCompany);
-	    
-	//     $this->guard()->login($user);
-
-	//     return redirect()->route('company');
-	    
-	// }
-
-
- //    protected function registered(Request $request, $user)
- //    {
- //        //
- //    }
-
 
 	use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    // protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+   
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+   
+
     protected function validator(array $data)
     {
+
+        $message = [
+            'required' => 'Kolom tidak boleh kosong!',
+            'min:8' => 'Password minimal 8 karakter',
+        ];
+
         return Validator::make($data, [
             'username' => ['required','string','max:100','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        ],$message);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\Models\User
-     */
+   
+
+
     protected function create(array $data)
     {
         return User::create([
@@ -115,6 +55,7 @@ class DaftarPerusahaanController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
 
     protected function registered(Request $request,$user)
     {

@@ -48,7 +48,7 @@ class PelamarController extends Controller
             'status' => 'pending'
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success','Lamaran Anda Telah Dikirim\n Tunggu Info Selanjutnya...');
     }
 
     /**
@@ -98,7 +98,7 @@ class PelamarController extends Controller
     {
         Pelamar::find($id)->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Lamaran anda telah dibatalkan');
     }
 
 

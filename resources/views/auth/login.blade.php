@@ -7,15 +7,6 @@
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
                 <div class="card-body">
-                    @if (Session::get('success'))
-            <div class="alert alert-success" role="alert">
-               <form class="d-inline" style="display: inline-block;" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <b>Pendaftaran Telah Berhasil</b> <br>silahkan periksa email untuk verifikasi, 
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">Verifikasi ulang?</button>.
-                    </form></p>
-            </div>
-            @endif
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 

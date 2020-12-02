@@ -6,6 +6,7 @@ use App\Models\Pelamar;
 use App\Models\simpanloker;
 use App\Models\kategori;
 use App\Models\StatusNikah;
+use App\Models\kualifikasi;
 
 function countPostPending()
 {
@@ -29,5 +30,8 @@ function status_nikah()
 	return StatusNikah::all();
 }
 
-
+function kualifikasi()
+{
+	return kualifikasi::all();
+}
 

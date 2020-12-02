@@ -9,6 +9,7 @@ use App\Http\Controllers\Dashboard\AdminsController;
 use App\Http\Controllers\Dashboard\CompaniesController;
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\Dashboard\ManagementLokerController;
+use App\Http\Controllers\Dashboard\PelamarAController;
 use App\Http\Controllers\Auth\DaftarUsercontroller;
 use App\Http\Controllers\Auth\DaftarPerusahaanController;
 use App\Http\Controllers\User\ProfileController;
@@ -34,9 +35,9 @@ use App\Http\Middleware\CheckRole;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::view('/','welcome')->middleware('guest');
 
 
 Auth::routes(['verify' => false,'register'=>false]);
@@ -56,6 +57,8 @@ Route::get('/redirect', [HomeController::class, 'redirectLogin'])->name('redirec
 /* ---------------------- HALAMAN BERKAITAKAN DENGAN LOWONGAN KERJA ---------------------------*/
 Route::get('/lowongan-kerja/detail/{slug}',
 	[HomeController::class,'detailLoker'])->name('detail.lowongan-kerja');
+Route::get('/postingan/detail/{slug}',
+	[HomeController::class,'detailLoker2'])->name('detail.lowongan-kerja2');
 Route::post('/lowongan-kerja/detail/{id}',
 	[PelamarController::class,'store'])->name('lowongan-kerja.melamar');
 Route::get('/lowongan-kerja/detail/{id}/hapus',
@@ -69,21 +72,24 @@ Route::get('lowongan-kerja/kategori/{slug}',[HomeController::class, 'showlokerfi
 
 
 /* ---------------------- ROUTE UNTUK PENDAFTARAN ----------------------*/
-Route::post('/daftar/pencari-kerja',[DaftarUserController::class, 'register']);
-Route::get('/daftar/pencari-kerja',[DaftarUserController::class, 'showRegistrationForm']);
-Route::post('/daftar/perusahaan',[DaftarPerusahaanController::class, 'register']);
-Route::get('/daftar/perusahaan',[DaftarPerusahaanController::class, 'showRegistrationForm']);
+Route::post('/daftar/pencari-kerja',[DaftarUserController::class, 'register'])->name('daftar.user');
+Route::post('/daftar/perusahaan',[DaftarPerusahaanController::class, 'register'])->name('daftar.perusahaan');
 Route::view('/daftar','auth.register');
 
+
+
+
+/* ----------------------MENU UNTUK SUPER ADMIN  ---------------------------*/
+Route::resource('/dashboard/management/admins',AdminsController::class);
+Route::resource('/dashboard/management/kategori',KategoriController::class);
+Route::resource('/dashboard/management/kualifikasi',KualifikasiController::class);
+Route::resource('/dashboard/management/status-nikah',StatusNikahController::class);
+Route::get('/dashboard/management/pelamar',[PelamarAController::class,'index']);
 
 
 /* ----------------------MENU UNTUK SUPER ADMIN DAN ADMIN ---------------------------*/
 Route::middleware(['checkrole:admin,super_admin'])->group(function () {
 Route::get('/dashboard/admin', [HomeController::class, 'dashboard'])->name('dashboard');
-Route::resource('/dashboard/management/kategori',KategoriController::class);
-Route::resource('/dashboard/management/kualifikasi',KualifikasiController::class);
-Route::resource('/dashboard/management/status-nikah',StatusNikahController::class);
-Route::resource('/dashboard/management/admins',AdminsController::class);
 Route::resource('/dashboard/management/companies',CompaniesController::class);
 Route::resource('/dashboard/management/users',UsersController::class);
 Route::get('/dashboard/management/loker/belum-ditinjau',[ManagementLokerController::class,'indexpending'])

@@ -41,9 +41,7 @@
               <td>
                 <a href="{{route('detail.perlamar',$plm->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                 <a class="btn btn-sm btn-success" href="{{route('aturInterview.perlamar',$plm->id)}}"><i class="fas fa-check"></i></a>
-                <a class="btn btn-sm btn-danger"
-                  onclick="event.preventDefault();
-               document.getElementById('failed').submit();"><i class="fas fa-times"></i></a>
+                <a class="btn btn-sm btn-danger keputusan" title="Eliminasi Pelamar" text="akan dinyatakan tereliminasi atau gagal?"  nama="{{$plm->profile->name}}"><i class="fas fa-times-circle"></i></a>
                      
               </td>
                 {{--<div class="btn-group">
@@ -93,6 +91,62 @@
   $(document).ready(function(){
     $('.table').DataTable();
   })
+</script>
+
+
+<script type="text/javascript">
+
+ const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 4000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+});
+
+
+$('.keputusan').click(function()
+{
+  var title = $(this).attr('title');
+  var text = $(this).attr('text');
+  var url = $(this).attr('url');
+  var nama = $(this).attr('nama');
+
+  Swal.fire({
+  title: title,
+  text:nama + " " + text,
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    $('#failed').submit();
+  }
+});
+});
+
+
+@if(Session::has('success'))
+  Toast.fire({
+  icon: 'success',
+  title: "{{Session('success')}}"
+  });
+@endif  
+
+
+$('.kosong').click(function() {
+      Toast.fire({
+    icon: 'warning',
+    title: 'Anda Belum Melampirkan Berkasnya'
+  });
+});
+
 </script>
       
 @endsection

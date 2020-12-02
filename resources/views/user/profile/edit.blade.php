@@ -2,7 +2,17 @@
 
 @extends('layouts.userlayout')
 
+@section('css')
+
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="{{asset('AdminLte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
+
+@endsection
+
+
 @section('title','Dashboard')
+
+
 
 @section('content')
 
@@ -197,6 +207,8 @@
         </div>
     </div>
 
+
+
 </div>
 <!-- /.container-fluid -->
 </section>
@@ -205,3 +217,66 @@
 @endsection
 
 
+
+
+<!------------------------------------ BAGIAN JAVASCRIPT ------------------------------------------>
+
+
+@section('js')
+
+<!-- SweetAlert2 -->
+<script src="{{asset('AdminLte/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
+<script type="text/javascript">
+
+ /*$(function() {
+    var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
+@if(Session::has('success'))
+      Toast.fire({
+        icon: 'success',
+        title: "{{Session('success')}}"
+      });
+     
+  @endif
+ }); */
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 4000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+});
+
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+});
+
+@if(Session::has('success'))
+      Toast.fire({
+        icon: 'success',
+        title: "{{Session('success')}}"
+      });
+     
+  @endif
+
+</script>
+
+
+@endsection

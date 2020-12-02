@@ -14,6 +14,8 @@
 
 @extends('layouts.userlayout')
 
+
+
 @section('title','Kategori')
 
 @section('nama_halaman','management Loker')
@@ -54,7 +56,7 @@
 
 
 					@if($upload->pasfoto == null)
-						<a class="btn btn-info btn-sm" onclick="alert('Anda Belum Melampirkan Pas Fofo')"><i class="fas fa-eye"></i></a>
+						<a class="btn btn-info btn-sm kosong"><i class="fas fa-eye"></i></a>
 					@endif
 					@if($upload->pasfoto != null)
 						<a class="btn btn-info btn-sm" href="{{$pathpasfoto}}"><i class="fas fa-eye"></i></a>
@@ -79,7 +81,7 @@
 					<a class="btn btn-primary btn-sm" href="{{$pathktp}}"><i class="fas fa-edit"></i></a>
 					@endif
 					@if($upload->ktp == null)
-					<a class="btn btn-info btn-sm" onclick="alert('Anda Belum Melampirkan Pas Fofo')"><i class="fas fa-eye"></i></a>
+					<a class="btn btn-info btn-sm kosong"><i class="fas fa-eye"></i></a>
 					@endif
 					@if($upload->ktp != null)
 					<a class="btn btn-info btn-sm" href="{{$pathktp}}"><i class="fas fa-eye"></i></a>
@@ -105,7 +107,7 @@
 					@endif
 
 					@if($upload->ijazah == null)
-					<a class="btn btn-info btn-sm" onclick="alert('Anda Belum Melampirkan Pas Fofo')"><i class="fas fa-eye"></i></a>
+					<a class="btn btn-info btn-sm kosong"><i class="fas fa-eye"></i></a>
 					@endif
 					@if($upload->ijazah != null)
 					<a class="btn btn-info btn-sm" href="{{$pathIjazah}}"><i class="fas fa-eye"></i></a>
@@ -130,7 +132,7 @@
 					@endif
 
 					@if($upload->skck == null)
-					<a class="btn btn-info btn-sm" onclick="alert('Anda Belum Melampirkan Pas Fofo')"><i class="fas fa-eye"></i></a>
+					<a class="btn btn-info btn-sm kosong"><i class="fas fa-eye"></i></a>
 					@endif
 					@if($upload->skck != null)
 					<a class="btn btn-info btn-sm" href="{{$skck}}"><i class="fas fa-eye"></i></a>
@@ -147,17 +149,17 @@
 				<td><span class="badge badge-success">Sudah Diupload</span></td>
 					@endif
 				<td>
-					@if($upload->skck == null)
+					@if($upload->skd == null)
 					<a class="btn btn-primary btn-sm" href="{{route('upload.skd',$id)}}"><i class="fas fa-upload"></i></a>
 					@endif
-					@if($upload->skck != null)
+					@if($upload->skd != null)
 					<a class="btn btn-primary btn-sm" href="{{route('upload.skd',$id)}}"><i class="fas fa-edit"></i></a>
 					@endif
 
-					@if($upload->skck == null)
-					<a class="btn btn-info btn-sm" onclick="alert('Anda Belum Melampirkan Pas Fofo')"><i class="fas fa-eye"></i></a>
+					@if($upload->skd == null)
+					<a class="btn btn-info btn-sm kosong"><i class="fas fa-eye"></i></a>
 					@endif
-					@if($upload->skck != null)
+					@if($upload->skd != null)
 					<a class="btn btn-info btn-sm" href="{{$skd}}"><i class="fas fa-eye"></i></a>
 					@endif
 
@@ -181,7 +183,7 @@
 					@endif
 
 					@if($upload->cv == null)
-					<a class="btn btn-info btn-sm" onclick="alert('Anda Belum Melampirkan Pas Fofo')"><i class="fas fa-eye"></i></a>
+					<a class="btn btn-info btn-sm kosong"><i class="fas fa-eye"></i></a>
 					@endif
 					@if($upload->cv != null)
 					<a class="btn btn-info btn-sm" href="{{$cv}}"><i class="fas fa-eye"></i></a>
@@ -194,8 +196,6 @@
     </div>
 
 
-
-
 </div>
 <!-- /.container-fluid -->
 </section>
@@ -206,9 +206,39 @@
 
 <!------------------------------------ BAGIAN JAVASCRIPT ------------------------------------------>
 
-
 @section('js')
 
- 
+<!-- SweetAlert2 -->
+<script type="text/javascript">
+
+ const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 4000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+});
+
+@if(Session::has('success'))
+	Toast.fire({
+	icon: 'success',
+	title: "{{Session('success')}}"
+	});
+@endif	
+
+
+$('.kosong').click(function() {
+	    Toast.fire({
+	  icon: 'warning',
+	  title: 'Anda Belum Melampirkan Berkasnya'
+	});
+});
+
+</script>
+
 
 @endsection

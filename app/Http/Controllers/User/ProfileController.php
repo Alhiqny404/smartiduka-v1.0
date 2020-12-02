@@ -106,7 +106,7 @@ class ProfileController extends Controller
             ]);
             
            
-        return redirect()->back();
+        return redirect()->back()->with('success','Profile Anda Berhasil Diubah');
     }
 
     /**

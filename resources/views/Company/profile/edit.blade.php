@@ -166,7 +166,37 @@
         language:'id'
       });
       CKEDITOR.config.allowedContent = true;
+
+
+
+
+// SWAL DI KANAN ATAS
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 4000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+});
+
+
+
+@if(Session::has('success'))
+    Toast.fire({
+    icon: 'success',
+    title: "{{Session('success')}}"
+    });
+@endif  
+
+
 </script>
+
+
+
 
 @endsection
 

@@ -64,7 +64,7 @@ class KategoriController extends Controller
                     'slug' => Str::slug($request->name)
                 ]);        
    
-        return response()->json(['success'=>'Book saved successfully.']);
+        return response()->json(['success'=>'Kategori Berhasil Diupdate.']);
     }
 
     /**
@@ -112,6 +112,6 @@ class KategoriController extends Controller
     {
         Kategori::find($id)->delete();
      
-        return response()->json(['success'=>'Book deleted successfully.']);
+        return response()->json(['success'=>'Data Berhasil DiHapus.']);
     }
 }

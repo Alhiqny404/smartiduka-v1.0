@@ -26,7 +26,7 @@
             <tr>
                 <th>No</th>
                 <th>Nama Status Pernikahan</th>
-                <th width="300px">Action</th>
+                <th>Action</th>
             </tr>
           </thead>
         </table>
@@ -62,7 +62,7 @@
                     </div>
       
                     <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Simpan Perubahan
+                     <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Simpan 
                      </button>
                     </div>
                 </form>
@@ -125,10 +125,10 @@
         ]
     });
     $('#createNewBook').click(function () {
-        $('#saveBtn').val("buat statusnikah");
+        $('#saveBtn').val("buat status nikah");
         $('#id').val('');
         $('#statusikahform').trigger("reset");
-        $('#modelHeading').html("Create New statusnikah");
+        $('#modelHeading').html("Tambah List Status Nikah");
         $('#ajaxModel').modal('show');
     });
     $('body').on('click', '.editBook', function () {
@@ -159,7 +159,7 @@
           },
           error: function (data) {
               console.log('Error:', data);
-              $('#saveBtn').html('Save Changes');
+              $('#saveBtn').html('Simpan Perubahan');
           }
       });
     });
@@ -167,9 +167,18 @@
     $('body').on('click', '.deleteBook', function () {
      
         var id = $(this).data("id");
-        confirm("Are You sure want to delete !");
-      
-        $.ajax({
+
+    Swal.fire({
+  title: "data akan dihapus",
+  text:"apakah anda yakin akan menghapusnya?",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    $.ajax({
             type: "DELETE",
             url: "{{ route('status-nikah.store') }}"+'/'+id,
             success: function (data) {
@@ -179,6 +188,10 @@
                 console.log('Error:', data);
             }
         });
+  }
+});
+      
+        
     });
      
   });

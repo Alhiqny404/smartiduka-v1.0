@@ -68,11 +68,9 @@
         <label>Minimal Kelulusan</label>
           <select required class="form-control @error('kualifikasi') is-invalid @enderror" name="kualifikasi" id="kualifikasi">
             <option value="">Pilih Kualifikasi</option>
-            <option value="Diploma/D1/D2/D3"  @if($post->kualifikasi == 'Diploma/D1/D2/D3') selected @endif>Diploma/D1/D2/D3</option>
-      <option value="Doctor/S3" @if($post->kualifikasi == 'Doctor/S3') selected @endif>Doctor/S3</option>
-      <option value="Master/S2" @if($post->kualifikasi == 'Prasarjana/S2') selected @endif>Prasarjana/S2</option>
-      <option value="Sarjana/S1" @if($post->kualifikasi == 'Sarjana/S1') selected @endif>Sarjana/S1</option>
-      <option value="SMA/SMK/STM" @if($post->kualifikasi == 'SMA/SMK/STM') selected @endif>SMA/SMK/STM</option>
+            @foreach(kualifikasi() as $kuali)
+            <option value="{{$kuali->name}}"  @if($post->kualifikasi == $kuali->name) selected @endif>{{$kuali->name}}</option>
+            @endforeach
           </select>
           @error('kualifikasi')
               <span class="invalid-feedback" role="alert">
@@ -84,7 +82,7 @@
           <div class="col">
             <div class="form-group">
               <label for="min_gajimin_gaji">Gaji Minimal</label>
-              <input required class="form-control @error('min_gaji') is-invalid @enderror" name="min_gaji" id="min_gaji" type="text" value="{{$post->min_gaji}}">
+              <input required  id="input-rupiah" class="form-control @error('min_gaji') is-invalid @enderror" name="min_gaji" id="min_gaji" type="number" value="{{$post->min_gaji}}">
               @error('min_gaji')
               <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -95,7 +93,7 @@
             <div class="col">
               <div class="form-group">
                 <label for="max_gaji">Gaji Maksimal</label>
-                <input required class="form-control @error('max_gaji') is-invalid @enderror" name="max_gaji" id="max_gaji" type="text" value="{{$post->max_gaji}}">
+                <input required  id="input-rupiah" class="form-control @error('max_gaji') is-invalid @enderror" name="max_gaji" id="max_gaji" type="number" value="{{$post->max_gaji}}">
                 @error('max_gaji')
               <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -148,6 +146,26 @@
         language:'id'
       });
       CKEDITOR.config.allowedContent = true;
+
+
+var input = document.getElementById('input-rupiah');
+input.addEventListener('keyup', function(e)
+{
+  var   number_string = bilangan.replace(/[^,\d]/g, '').toString(),
+    split = number_string.split(','),
+    sisa  = split[0].length % 3,
+    rupiah  = split[0].substr(0, sisa),
+    ribuan  = split[0].substr(sisa).match(/\d{1,3}/gi);
+    
+  if (ribuan) {
+    separator = sisa ? '.' : '';
+    rupiah += separator + ribuan.join('.');
+  }
+  
+  rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+  return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+});
+
 </script>
 
 @endsection
