@@ -55,6 +55,8 @@ Route::get('/redirect', [HomeController::class, 'redirectLogin'])->name('redirec
 
 
 /* ---------------------- HALAMAN BERKAITAKAN DENGAN LOWONGAN KERJA ---------------------------*/
+Route::middleware(['verified'])->group(function () {
+
 Route::get('/lowongan-kerja/detail/{slug}',
 	[HomeController::class,'detailLoker'])->name('detail.lowongan-kerja');
 Route::get('/postingan/detail/{slug}',
@@ -67,7 +69,7 @@ Route::post('lowongan-kerja/simpan',[SimpanLokerController::class, 'create'])->n
 Route::get('lowongan-kerja/batal-simpan/{post_id}',[SimpanLokerController::class, 'destroy'])->name('nonsimpan.loker'); 
 Route::post('lowongan-kerja/',[HomeController::class, 'lokerfilterkategori'])->name('lokerfilterkategori');
 Route::get('lowongan-kerja/kategori/{slug}',[HomeController::class, 'showlokerfilterkategori'])->name('showlokerfilterkategori');
-
+});
 
 
 
@@ -87,6 +89,8 @@ Route::resource('/dashboard/management/status-nikah',StatusNikahController::clas
 Route::get('/dashboard/management/pelamar',[PelamarAController::class,'index']);
 
 
+
+
 /* ----------------------MENU UNTUK SUPER ADMIN DAN ADMIN ---------------------------*/
 Route::middleware(['checkrole:admin,super_admin'])->group(function () {
 Route::get('/dashboard/admin', [HomeController::class, 'dashboard'])->name('dashboard');
@@ -98,7 +102,10 @@ Route::get('/dashboard/management/loker/sudah-ditinjau',[ManagementLokerControll
 ->name('management.loker.indexnotpending');
 Route::get('/dashboard/management/loker/{id}/tinjau',[ManagementLokerController::class,'tinjauGet'])->name('post.tinjau');
 Route::post('/dashboard/management/loker/{id}/tinjau',[ManagementLokerController::class,'tinjauPost'])->name('post.tinjauPost');
+Route::post('/dashboard/management/pelamar',[ManagementLokerController::class,'tinjauPost'])->name('post.tinjauPost');
 });
+
+
 
 
 /* ----------------------------- MENU UNTUK PERUSAHAAN ---------------------	----------*/

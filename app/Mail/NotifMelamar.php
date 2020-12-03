@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MyTestMail extends Mailable
+class NotifMelamar extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,13 +16,12 @@ class MyTestMail extends Mailable
      *
      * @return void
      */
-
-    public $isi;
-
-    public function __construct($isi)
+    public $body;
+    public function __construct($body)
     {
-        $this->isi = $isi;
+        $this->body = $body;
     }
+
 
     /**
      * Build the message.
@@ -31,6 +30,6 @@ class MyTestMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Test Kirim Email')->view('testname');
+        return $this->subject('Lamaran saya')->view('emails.notifmelamar');
     }
 }

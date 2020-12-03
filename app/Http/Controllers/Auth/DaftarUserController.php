@@ -61,8 +61,8 @@ use RegistersUsers;
 	    $user->Profile()->save(new Profile);
 	    $user->Uploads()->save(new Uploads);
 
-	    $this->guard()->logout();
-	    return redirect()->route('login')->with('success','Pendaftaran telah berhasil');
+	    $this->guard($user)->logout();
+	    return redirect()->route('company')->with('success','Pendaftaran telah berhasil');
     }
 
 

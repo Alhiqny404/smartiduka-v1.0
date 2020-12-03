@@ -78,6 +78,22 @@
           <a href="#" class="d-block">{{auth()->user()->profile->name()}}</a>
         </div>
         @endrole
+        @role('company')
+        <div class="image">
+          <img src="{{auth()->user()->profileCompany->logo()}}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">{{auth()->user()->profileCompany->name()}}</a>
+        </div>
+        @endrole
+        @hasrole('admin|super_admin')
+          <div class="image">
+          <img src="{{asset('foto-profile-user/image.png')}}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">{{auth()->user()->username}}</a>
+        </div>
+        @endrole
       </div>
 
       
@@ -161,6 +177,16 @@
                 </a>
               </li>
         @endrole
+        @role('company')
+          <li class="nav-item">
+            <a href="{{route('company')}}" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+          @endrole
               <li class="nav-item">
                 <a href="{{ route('logout') }}"
                 class="nav-link"
@@ -268,5 +294,6 @@
 </script>
 
 @yield('js')
+
 </body>
 </html>

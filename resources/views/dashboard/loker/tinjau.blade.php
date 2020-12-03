@@ -12,10 +12,21 @@
 <!-- Main content -->
 <section class="content">
 <div class="container-fluid">
-  
-    {{$post}}
 
-    {{$post->user->email}}
+  <table>
+    <tr>
+      <td>Judul</td>
+      <td>{{$post->title}}</td>
+    </tr>
+    <tr>
+      <td>Minimal Kelulusan</td>
+      <td>{{$post->kualifikasi}}</td>
+    </tr>
+    <tr>
+      <td>Lokasi</td>
+      <td>{{$post->Lokasi}}</td>
+    </tr>
+  </table>
 
     <form method="post" action="" id="setujui">
       @csrf

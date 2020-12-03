@@ -30,7 +30,7 @@
                     </div>
 
                 </form>
-			@foreach($post as $post)
+			@foreach($posts as $post)
 			<div class="panel bg-light p-3">
                 <div class="panel-body">
                     <div class='position-title header-text'>
@@ -78,6 +78,8 @@
                 </div>
             </div>
 			@endforeach
+
+            {{--{{ $posts->links() }}--}}
 		</div>
 		<div class="col-xs-12 col-md-5 aside">
 			<!-- <aside class="fixed bg-primary">
@@ -120,30 +122,59 @@
 
 @section('js')
 
+<script src="{{asset('AdminLte/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 <script type="text/javascript">
-	
-
 
 // SWAL DI KANAN ATAS
 const Toast = Swal.mixin({
-	toast: true,
-	position: 'top-end',
-	showConfirmButton: false,
-	timer: 4000,
-	timerProgressBar: true,
-	didOpen: (toast) => {
-	toast.addEventListener('mouseenter', Swal.stopTimer)
-	toast.addEventListener('mouseleave', Swal.resumeTimer)
-	}
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 4000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
 });
 
+
+
 @if(Session::has('success'))
-Swal.fire(
-  'Good job!',
-  'You clicked the button!',
-  'success'
-);
+    Toast.fire({
+    icon: 'success',
+    title: "{{Session('success')}}"
+    });
 @endif
 
+$('.kosong').click(function() {
+      Toast.fire({
+    icon: 'warning',
+    title: 'Status Postingan masih dalam Peninjauan Admin'
+  });
+});
+
+
+$('.delete').click(function()
+{
+  var title = $(this).attr('title');
+  var text = $(this).attr('text');
+
+  Swal.fire({
+  title: title,
+  text:text,
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    $('.form-delete').submit();
+  }
+});
+});
 
 </script>
+
+@endsection

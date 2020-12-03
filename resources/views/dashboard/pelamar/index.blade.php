@@ -23,7 +23,6 @@
           <th>Nama Pelamar</th>
           <th>Lowongan Kerja</th>
           <th>Perusahaan</th>
-          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -33,7 +32,6 @@
           <td>{{$plmr->user->profile->name}}</td>
           <td>{{$plmr->post->title}}</td>
           <td>{{$plmr->company->name}}</td>
-          <td></td>
         </tr>
         @endforeach
       </tbody>

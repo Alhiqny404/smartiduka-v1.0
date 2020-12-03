@@ -10,6 +10,11 @@ use App\Models\Uploads;
 class UploadsController extends Controller
 {
 
+	public function __construct()
+    {
+        $this->middleware(['auth','verified']);
+    }
+
 	public function index()
 	{
 		$upload = Uploads::where('user_id',auth()->user()->id)->first();

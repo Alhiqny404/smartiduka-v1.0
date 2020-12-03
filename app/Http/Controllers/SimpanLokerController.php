@@ -8,6 +8,11 @@ use App\Models\SimpanLoker;
 class SimpanLokerController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware(['auth','verified']);
+    }
+
     public function index()
     {
         $lokerfavorit = Simpanloker::where('user_id',auth()->User()->id)->get();

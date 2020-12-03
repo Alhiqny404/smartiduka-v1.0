@@ -32,6 +32,13 @@
   <!-- SweetAlert2 -->
 <link rel="stylesheet" href="{{asset('AdminLte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
 
+
+  <!-- myCSS -->
+  <link rel="stylesheet" href="{{asset('frontend/css/myCSS/home.css')}}">
+  <link rel="stylesheet" href="{{asset('frontend/css/myCSS/userProfile.css')}}">
+  <link rel="stylesheet" href="{{asset('frontend/css/myCSS/fontImport.css')}}">
+
+
   @yield('css')
 
 
@@ -156,11 +163,11 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a href="{{url('/dashboard/management/pelamar')}}" class="nav-link">
               <i class="nav-icon fas fa-database"></i>
               <p>
                 Data Pelamar
-                <span class="badge badge-info right">2</span>
+                
               </p>
             </a>
           </li>
@@ -238,6 +245,14 @@
             </ul>
           </li>
           <li class="nav-item">
+            <a href="{{route('pelamar.index')}}" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Pelamar
+              </p>
+            </a>
+          </li>
+          {{--<li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-database"></i>
               <p>
@@ -268,7 +283,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a href="{{url('management/perlamar/interview')}}" class="nav-link">
               <i class="fas fa-calendar nav-icon"></i>
@@ -292,22 +307,23 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a> 
-             @role('company')
+            
             <ul class="nav nav-treeview">
+               @role('company')
               <li class="nav-item">
                 <a href="{{url('/profile-perusahaan')}}" class="nav-link">
                   <i class="fas fa-building nav-icon"></i>
                   <p>Profile Perusahaan</p>
                 </a>
               </li>
+              @endrole
+
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="fas fa-id-card-alt nav-icon"></i>
                   <p>Pengaturan Akun</p>
                 </a>
               </li>
-              @endrole
-
               <li class="nav-item">
                 <a href="{{ route('logout') }}"
                 class="nav-link"

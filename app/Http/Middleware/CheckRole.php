@@ -20,7 +20,7 @@ class CheckRole
     {
       if(!Auth::user()->hasRole($roles))
       {
-        return redirect()->back();
+        return redirect()->back()->with('failed','anda tidak punya akses ke halaman tersebut');
       }
 
       return $next($request);

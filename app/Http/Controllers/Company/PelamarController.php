@@ -6,12 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pelamar;
 use App\Models\Uploads;
+use App\Models\User;
 use App\Models\ProfileCompany;
+use App\Models\Interview;
+use App\Models\PostLoker;
+use App\Mail\NotifMelamar;
 use DataTables;
 use Carbon\Carbon;
 
 class PelamarController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth','verified']);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -40,13 +50,32 @@ class PelamarController extends Controller
      */
     public function store(Request $request,$id)
     {
+
         $company = ProfileCompany::where('user_id',$request->company_id)->first()->id;
+        
         Pelamar::create([
             'company_id' => $company,
             'user_id' => $request->user_id,
             'post_id' => $id,
             'status' => 'pending'
         ]);
+
+        $pelamar =  User::where('id',$request->user_id)->first()->profile;
+        $perusahaan =  ProfileCompany::where('user_id',$request->company_id)->first();
+        $post = PostLoker::where('id',$id)->first();
+
+        $body = [
+            'name' => $pelamar->name,
+            'name_company' => $perusahaan->name,
+            'title_post' => $post->title,
+            'email_company' => $perusahaan->email_person,
+            'contact_company' => $perusahaan->contact_person
+        ];
+
+        \Mail::to($pelamar->email)->send(new NotifMelamar($body));
+
+
+        
 
         return redirect()->route('home')->with('success','Lamaran Anda Telah Dikirim\n Tunggu Info Selanjutnya...');
     }
@@ -135,8 +164,13 @@ class PelamarController extends Controller
     public function dataPelamar()
     {
         $company_id = auth()->user()->ProfileCompany->id;
+        $interview = Interview::all();
         $pelamar = Pelamar::where('company_id',$company_id)->where('status','pending')->get();
-        return view('company.pelamar.index',compact('pelamar'));
+        $gagal = Pelamar::where('company_id',$company_id)->where('status','failed')->get();
+        $lolos = Pelamar::where('company_id',$company_id)->where('status','success')->get();
+        $interview = Interview::where('status','pending')->get();
+
+        return view('company.pelamar.index',compact('pelamar','gagal','interview','lolos'));
     }
     // DETAIL PELAMAR
     public function detailPelamar($id)

@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth']);
     }
 
     /**
@@ -56,9 +56,9 @@ class HomeController extends Controller
 /* ---------------------------- HALAMAN UTAMA USERS -------------------------*/
     public function index()
     {
-        $post = PostLoker::where('status','success')->get();
+        $posts = PostLoker::where('status','success')->latest()->paginate(10);
 
-        return view('home',compact('post'));
+        return view('home',compact('posts'));
     }
 
     public function dashboard()

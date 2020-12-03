@@ -9,6 +9,12 @@ use App\Models\Pelamar;
 
 class InterviewController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth','verified']);
+    }
+    
     public function index()
     {
 
@@ -32,7 +38,7 @@ class InterviewController extends Controller
 
         Pelamar::find($id)->update(['status' => 'process']);
 
-    	return redirect()->route('pelamar.index');
+    	return redirect()->route('pelamar.index')->with('success','Berhasil Melakukan penjadwalan');
     }
 
     public function doneInverview($id)
