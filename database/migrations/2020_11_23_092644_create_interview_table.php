@@ -17,6 +17,7 @@ class CreateInterviewTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('pelamar_id');
+            $table->integer('company_id');
             $table->string('tempat');
             $table->date('tanggal');
             $table->time('waktu');
