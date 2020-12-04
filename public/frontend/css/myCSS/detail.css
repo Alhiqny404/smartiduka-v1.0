@@ -1,7 +1,8 @@
 .detail-loker-row-container{
     padding: 20px;
 } .detail-loker-container{
-    padding: 20px;
+    padding: 1px 20px;
+    position: relative;
 } .detail-warning{
     margin-top: 20px;
 } .detail-warning h3{
@@ -36,4 +37,28 @@ a.text-white{
     margin: 10px 0 0 0;
     font-weight: bold;
     letter-spacing: 2px;
+}
+
+.bookmark{
+    position: absolute;
+    top: -45px;
+    right: 0;
+} .bookmark i{
+    font-size: 20px;
+    color: white;
+} .bookmark i.far{
+    margin-right: 8px;
+    margin-top: 5px;
+} .melamar{
+    margin-top: 50px;
+}
+
+
+a.edit{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+} a.edit i{
+    font-size: 20px;
 }

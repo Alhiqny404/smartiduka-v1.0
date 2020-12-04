@@ -66,7 +66,7 @@ class ProfileCompanyController extends Controller
      */
     public function edit($id)
     {
-        $company = ProfileCompany::find($id)->first();
+        $company = ProfileCompany::where('user_id', $id)->first();
         return view('company.profile.edit',compact('company'));
     }
 

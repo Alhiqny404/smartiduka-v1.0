@@ -34,6 +34,7 @@
   <link rel="stylesheet" href="{{asset('frontend/css/myCSS/home.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/myCSS/userProfile.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/myCSS/fontImport.css')}}">
+  <link rel="stylesheet" href="{{asset('frontend/css/myCSS/warna.css')}}">
 
     <!-- SweetAlert2 -->
 <link rel="stylesheet" href="{{asset('AdminLte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">

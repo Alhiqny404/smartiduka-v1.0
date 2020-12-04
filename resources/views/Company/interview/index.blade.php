@@ -4,6 +4,12 @@
 
 @section('nama_halaman','Data Penjadwalan Interview')
 
+<style>
+	.table1{
+		width: 100%; 
+	}
+</style>
+
 
 
 @section('content')
@@ -120,21 +126,6 @@
               <!-- /.card -->
             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	{{--<div class="col-md-12">
 		<div class="card card-primary card-outline">
 		<div class="card-header">
@@ -192,7 +183,7 @@
 		</h3>
 		</div>
 		<div class="card-body">
-		<table class="table1 table-bordered table-hover table-sm">
+		<table class="table1 table-bordered table-hover w-100 table-md">
 		<thead class="table-primary">
 		<tr>
 		<th>No</th>

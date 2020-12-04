@@ -20,6 +20,7 @@ use App\Http\Controllers\Company\PostLokerController;
 use App\Http\Controllers\Company\PelamarController;
 use App\Http\Controllers\Company\InterviewController;
 use App\Http\Controllers\SimpanLokerController;
+use App\Http\Controllers\ShowPerusahaan;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\CheckRole;
@@ -41,6 +42,11 @@ Route::view('/','welcome')->middleware('guest');
 
 
 Auth::routes(['verify' => true,'register'=>false]);
+
+
+
+// Melihat profile perusahaan
+Route::get('/profile/perusahaan/{id}',[ShowPerusahaan::class,'index'])->name('lihat.perusahaan');
 
 
 // ROUTE HALAMAN UTAMA SETELAH LOGIN
@@ -76,7 +82,7 @@ Route::get('lowongan-kerja/kategori/{slug}',[HomeController::class, 'showlokerfi
 /* ---------------------- ROUTE UNTUK PENDAFTARAN ----------------------*/
 Route::post('/daftar/pencari-kerja',[DaftarUserController::class, 'register'])->name('daftar.user');
 Route::post('/daftar/perusahaan',[DaftarPerusahaanController::class, 'register'])->name('daftar.perusahaan');
-Route::view('/daftar','auth.register');
+Route::view('/daftar','auth.register')->middleware('guest');
 
 
 

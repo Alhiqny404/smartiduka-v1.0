@@ -1,8 +1,8 @@
 @extends('layouts.adminlte')
 
-@section('title','Kategori')
+@section('title','Tambah Loker')
 
-@section('nama_halaman','Kategori')
+@section('nama_halaman','')
 
 
 @section('content')
@@ -127,8 +127,8 @@
         </div>
       </div>
       <div class="card-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-        <button type="submit" class="btn btn-primary" id="saveBtn" value="create">Tambahkan</button>
+        <a href="/dashboard/perusahaan" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-caret-left"></i> Kembali</a>
+        <button type="submit" class="btn btn-primary" id="saveBtn" value="create"><i class="fas fa-plus"></i> Tambahkan</button>
       </div>
       </form>
       </div>

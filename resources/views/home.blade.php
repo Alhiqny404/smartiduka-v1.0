@@ -2,7 +2,7 @@
 
 @extends('layouts.userlayout')
 
-@section('title','HOME')
+@section('title','Home')
 
 @section('content')
 
@@ -58,10 +58,10 @@
                             <i class="fas fa-dollar-sign"></i>
                                 </i><span>IDR {{ $post->min_gaji }} - {{ $post->max_gaji }}</span>
                             </li>
+                            <li class="badge badge-danger">
+                            <i class="fas fa-dollar-sign"></i><span class="job-date-text text-muted text-white">{{ $post->created_at->diffForHumans() }}</span>
+                            </li>
                         </ul>
-                        <div>
-                            <span class="job-date-text text-muted badge badge-danger text-white">{{ $post->created_at->diffForHumans() }}</span>
-                        </div>
 
                         @if(simpanloker($post->id)->count() == 0)
                         <form method="POST" action="{{route('simpan.loker')}}">

@@ -3,6 +3,9 @@
 @extends('layouts.userlayout')
 
 @section('title','Dashboard')
+@section('css')
+  <link rel="stylesheet" href="{{asset('frontend/css/myCSS/detail.css')}}">
+@endsection
 
 @section('content')
 
@@ -18,6 +21,7 @@
               <div class="widget-user-header bg-primary">
                 <h3 class="widget-user-username">{{$profile->name}}</h3>
                 <h5 class="widget-user-desc">{{$profile->pendidikan}}</h5>
+                <a href="{{route('profile.edit',$profile->id)}}" class="edit"><i class="fas fa-user-edit"></i></a>
               </div>
               <div class="widget-user-image">
                 <img class="img-circle elevation-2" src="{{asset('frontend/img/user.png')}}" alt="User Avatar">
@@ -219,7 +223,6 @@
             </div>
           </div>
         </div>
-        
       </div>
     </div>
   </div>

@@ -20,7 +20,6 @@
 <br> -->
 
 	<div class="container">
-	<h1>{{$post->user->profileCompany->name}}</h1>
 		<div class="detail-loker-row-container">
 			<div class="row">
 				<div class="col-md desk bg-white">
@@ -46,12 +45,12 @@
 				<div class="col-md desk bg-white">
 					<i class="fas fa-money-bill-wave-alt bg-success"></i>
 					<span>Rata gaji :</span>
-					<p>{{$post->min_gaji}}, {{$post->max_gaji}}</p>
+					<p>RP. {{$post->min_gaji}}- RP. {{$post->max_gaji}}</p>
 				</div>
 			</div>
 
 			<div class="detail-warning">
-				<h3 class="bg-info">PENGUMUMAN!! {{$post->user->profileCompany->name}}</h3>
+			<h3 class="bg-info"><a href="{{route('lihat.perusahaan',$post->user->profileCompany->id)}}">{{$post->user->profileCompany->name}}</a></h3>
 			</div>
 			<div class="detail-loker-container bg-white">
 				
@@ -84,17 +83,17 @@
 			</form>
 				<button class="btn btn-primary lamar" title="Mengirim lamaran Anda" text="Data diri dan lampiran anda akan dikirim ke perusahaan terkait">Lamar Sekarang</button>
 			@endif
-				<br>
-				@if(simpanloker($post->id)->count() == 0)
-		<form method="POST" action="{{route('simpan.loker')}}">
+			<a href="/home" class="btn btn-secondary text-white">Kembali</a>
+		@if(simpanloker($post->id)->count() == 0)
+		<form method="POST" action="{{route('simpan.loker')}}" class="bookmark">
 			@csrf
 			<input type="hidden" name="post_id" value="{{$post->id}}">
 			<input type="hidden" name="user_id" value="{{auth()->user()->id}}">
-			<button class="btn btn-warning">Simpan lowongan kerja ke favorit</button>
+			<button class="btn bg-transparent"><i class="far fa-bookmark"></i></button>
 		</form>
 		@endif
 		@if(simpanloker($post->id)->count() > 0)
-		<a url="{{route('nonsimpan.loker',$post->id)}}" class="btn btn-danger coba" title="menghapus dari daftar favorit" text="Postingan ini akan dihapus dari daftar favorit">Batal Simpan lowongan kerja ke favorit</a>
+		<a url="{{route('nonsimpan.loker',$post->id)}}" class="coba bookmark btn bg-transparent" title="menghapus dari daftar favorit" text="Postingan ini akan dihapus dari daftar favorit"><i class="fas fa-bookmark"></i></a>
 		@endif
 		
 		@endrole
@@ -148,7 +147,7 @@ $('.coba').click(function()
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
+  confirmButtonText: 'Yes, saya mau melamar'
 }).then((result) => {
   if (result.isConfirmed) {
   	window.location = url;
@@ -169,7 +168,7 @@ $('.lamar').click(function()
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
   cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
+  confirmButtonText: 'Yes, saya mau melamar'
 }).then((result) => {
   if (result.isConfirmed) {
   	$('.melamar').submit();

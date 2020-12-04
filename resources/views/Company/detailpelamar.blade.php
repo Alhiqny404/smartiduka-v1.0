@@ -1,8 +1,27 @@
 @extends('layouts.adminlte')
 
-@section('title','management pelamar')
+@section('title','Management Pelamar')
 
-@section('nama_halaman','management pelamar')
+@section('nama_halaman','')
+
+<style>
+  .container-fluid{
+    border-left: 5px solid #007bff;
+    padding: 0 !important;
+  }
+  table.table{
+    border-left: 2px solid #007bff;
+  }
+  tr.text-center{
+    border-top: none !important;
+  } 
+  table.success{
+    border-left: 2px solid #28a745;
+  }
+  table.warning{
+    border-left: 2px solid #ffc107;
+  }
+</style>
 
 
 
@@ -23,15 +42,18 @@
 
 
 <!-- Main content -->
+<div class="container">
 <section class="content">
 <div class="container-fluid">
   
 
 
-<div class="invoice p-3 mb-3">
+<div class="invoice p-4 mb-3">
               <!-- title row -->
               <div class="row">
-                <div class="col-12 mb-3">
+                <div class="col-md">
+                <div class="row">
+              <div class="col-12 mb-3">
                   <h4>
                     <i class="fas fa-globe"></i>  Detail Pelamar
                   </h4>
@@ -40,10 +62,56 @@
               </div>
               <!-- info row -->
               <div class="row invoice-info">
-                <div class="col invoice-col">
+              <div class="col invoice-col">
+                  <address class="text-center">
+                    <img src="{{url($pasfoto)}}" width="200px" class="m-auto">
+                </div>
+
+                
+                <!-- /.col -->
+              </div>
+                </div>
+                <div class="col-md">
+                <table class="table table-striped my-4">
+                    <tbody>
+                    	<tr>
+                    		<td>Pas Foto</td>
+                    		<td><a href="{{$pasfoto}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+                    	</tr>
+                    <tr>
+                      <td>KTP</td>
+                      <td><a href="{{$ktp}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>Surat Keterangan Catatan Kepolisian</td>
+                      <td><a href="{{$skck}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>Surat Keterangan Dokter</td>
+                      <td><a href="{{$skd}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>Ijazah Terakhir</td>
+                      <td><a href="{{$ijazah}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>CV</td>
+                        <td><a href="{{$cv}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- /.row -->
+              
+              <!-- Table row -->
+              
+                  
+              <strong>Data Pribadi</strong><br>
+                <div class="row">
+                  <div class="col-md-6">
                   <address>
-                    <strong>Data Pribadi</strong><br>
-                    <table cellpadding="3">
+                    <table cellpadding="3" class="table table-striped warning">
                     	<tr>
                     		<td>Nama</td>
                     		<td>:</td>
@@ -69,7 +137,12 @@
                     		<td>:</td>
                     		<td>{{$pelamar->profile->alamat}}</td>
                     	</tr>
-                    	<tr>
+                    </table>
+                  </address>
+                  </div>
+                  <div class="col-md-6">
+                    <table class="table table-striped success">
+                    <tr>
                     		<td>Status Perkawinan</td>
                     		<td>:</td>
                     		<td>{{$pelamar->profile->status_nikah}}</td>
@@ -90,64 +163,10 @@
                     		<td>{{$pelamar->profile->website}}</td>
                     	</tr>
                     </table>
-                  </address>
+                  </div>
                 </div>
                 <!-- /.col -->
-                <div class="col invoice-col">
-                  <address>
-                  	<img src="{{url($pasfoto)}}" width="200px" class="float-right">
-                </div>
-                
-              </div>
               <!-- /.row -->
-
-              <!-- Table row -->
-              <div class="row">
-                <div class="col-12 table-responsive">
-                  <table class="table table-striped">
-                    <thead>
-                    <tr>
-                      <th colspan="5" class="text-center">LAMPIRAN ONLINE</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    	<tr>
-                    		<td>1</td>
-                    		<td>Pas Foto</td>
-                    		<td><a href="{{$pasfoto}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
-                    	</tr>
-                    <tr>
-                      <td>2</td>
-                      <td>KTP</td>
-                      <td><a href="{{$ktp}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Surat Keterangan Catatan Kepolisian</td>
-                      <td><a href="{{$skck}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Surat Keterangan Dokter</td>
-                      <td><a href="{{$skd}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>Ijazah Terakhir</td>
-                      <td><a href="{{$ijazah}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>CV</td>
-                        <td><a href="{{$cv}}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-
 <a href="{{url('/management/perlamar')}}" class="btn btn-primary">Kembali</a>
 
               {{--<!-- this row will not appear when printing -->
@@ -168,6 +187,7 @@
 <!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+</div>
 
 @endsection
 

@@ -2,6 +2,8 @@
     background-color: #40484e;
 } */
 
+
+
 button.tandai{
     background: none;
     border: none;
@@ -50,7 +52,7 @@ div.panel{
 div.panel .tandai{
     position: absolute;
     right: 20px;
-    top: -80px;
+    top: -60px;
     font-size: 20px;
 } 
 /* div.panel:nth-child(2n) .tandai{
@@ -104,9 +106,10 @@ div.panel h3, div.panel h2{
 } div.panel h2{
     padding-top: 10px;
     margin-bottom: 0;
-    font-size: 23px;
+    font-size: 25px;
     font-weight: bold;
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
 } div.panel h3{
     font-size: 15px;
     padding-bottom: 10px;
@@ -203,6 +206,10 @@ div.panel h3, div.panel h2{
 
 
 
+.badge span{
+    font-size: 14px;
+    padding-left: 3px;
+}
 
 
 

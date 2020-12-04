@@ -59,6 +59,8 @@
                             <div class="text-header text-light">
                                 <h2>SMART <span>IDUKA</span> <br>Temukan pekerjaan</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Iste esse vitae error blanditiis repellat temporibus.</p>
+                                <img src="{{asset('frontend/img/KKSI//Bendera Smart School remake.png')}}" alt="logo" style="width: 100px">
+                                <img src="{{asset('frontend/img/KKSI//KKSI5.png')}}" alt="logo" style="width: 100px">
                             </div>
                         </div>
                         <div class="col-sm">
@@ -170,11 +172,11 @@
             <div class="container">
                 <h2 class="text-center font-weight-normal">Klien Kami</h2>
                 <section class="customer-logos slider">
-                    <div class="slide"><img src="{{asset('frontend/img/cooperation/adidas.png')}}" alt="logo"></div>
+                    <div class="slide"><img src="{{asset('frontend/img/KKSI/Bendera Smart School remake.png')}}" alt="logo"></div>
                     <div class="slide"><img src="{{asset('frontend/img/cooperation/facebook.png')}}" alt="logo"></div>
                     <div class="slide"><img src="{{asset('frontend/img/cooperation//google.png')}}" alt="logo"></div>
                     <div class="slide"><img src="{{asset('frontend/img/cooperation//instagram.png')}}" alt="logo"></div>
-                    <div class="slide"><img src="{{asset('frontend/img/cooperation//nike.png')}}" alt="logo"></div>
+                    <div class="slide"><img src="{{asset('frontend/img/KKSI//KKSI5.png')}}" alt="logo"></div>
                     <div class="slide"><img src="{{asset('frontend/img/cooperation//twitter.png')}}" alt="logo"></div>
                     <div class="slide"><img src="{{asset('frontend/img/cooperation//uber.png')}}" alt="logo"></div>
                     <div class="slide"><img src="{{asset('frontend/img/cooperation//youtube.png')}}" alt="logo"></div>

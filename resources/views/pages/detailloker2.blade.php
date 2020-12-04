@@ -2,20 +2,95 @@
 @extends('layouts.adminlte')
 
 @section('title','Dashboard')
-
+@section('css')
+<link rel="stylesheet" href="{{asset('frontend/css/myCSS/tinjau.css')}}">
+@endsection
 @section('content')
 
-{{$post}}
-<br>
-{{$pelamar->count()}}
-<br>
-{{$post->user_id}}
-<br>
-<br>
-{{simpanloker($post->id)->first()}}
-<br>
-<br>
+<div class="container-fluid tinjau-container">
 
+      <div class="row">
+				<div class="col-md desk bg-white">
+          <i class="fas fa-building bg-primary"></i>
+					<span>Perusahaan :</span>
+					<p>{{$post->user->profileCompany->name}}</p>
+				</div>
+				<!-- <div class="col-md desk bg-white">
+					<i class="fas fa-portrait bg-info"></i>
+					<span>Sebagai :</span>
+					<p>{{$post->sbg}}</p>
+				</div> -->
+        <div class="col-md desk bg-white">
+        <i class="fas fa-clipboard-list bg-danger"></i>
+					<span>Kategori :</span>
+					<p>{{$post->kategori->name}}</p>
+				</div>
+				<div class="col-md desk bg-white">
+        <i class="fas fa-address-book bg-success"></i>
+					<span>Sebagai :</span>
+					<p>{{$post->sbg}}</p>
+				</div>
+				<div class="col-md desk bg-white">
+          <i class="fas fa-archive bg-warning"></i>
+					<span>Kuota :</span>
+					<p>Dibutuhkan {{$post->kuota}} Orang</p>
+				</div>
+      </div>
+
+      <br>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="info-box">    
+            <span class="info-box-icon bg-success"><i class="fas fa-money-bill-wave-alt"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Gaji :</span>
+              <span class="info-box-number">RP. {{$post->min_gaji}}- RP. {{$post->max_gaji}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <div class="info-box">    
+            <span class="info-box-icon bg-info"><i class="fas fa-map-marker-alt"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Lokasi :</span>
+              <span class="info-box-number">{{$post->lokasi}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <div class="info-box">    
+            <span class="info-box-icon bg-danger"><i class="fas fa-graduation-cap"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Kualifikasi</span>
+              <span class="info-box-number">{{$post->kualifikasi}}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="container-tinjau-deskripsi bg-white w-100 h-100">
+            <div class="tinjau-header bg-primary px-4 py-3">
+              <h3>Deskripsi</h3>
+            </div>
+            <div class="tinjau-body px-4 py-3">
+              <p>{{$post->deskripsi}}</p>
+            </div>
+            <div class="tinjau-footer bg-light">
+                  <a href="/management/lowongan-kerja" class="btn btn-secondary text-white"><i class="fas fa-caret-left"></i></i> Kembali</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+
+
+
+
+
+</div>
 
 @role('user')
     @if($pelamar->count() > 0)
@@ -23,6 +98,7 @@
         <h1>Anda Telah diterima bekerja diperusahaan ini</h1>
         @endif
     @endif
+
 
     @if($pelamar->count() > 0)
         @if($pelamar->first()->status == 'failed')

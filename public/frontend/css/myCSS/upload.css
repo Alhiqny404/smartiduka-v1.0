@@ -4,8 +4,8 @@
 }
 
 .upload-header, .upload-body{
-    
     padding: 20px;
+    margin-bottom: 0;
 }
 .upload-header h1{
     text-transform: uppercase;

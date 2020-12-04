@@ -120,19 +120,19 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{route('kategori.index')}}" class="nav-link">
-                  <i class="nav-icon fas fa-database"></i>
+                  <i class="fas fa-clipboard-list nav-icon"></i>
                   <p>Kategori</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('kualifikasi.index')}}" class="nav-link">
-                  <i class="nav-icon fas fa-database"></i>
+                  <i class="nav-icon fas fa-address-book"></i>
                   <p>Kualifikasi</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('status-nikah.index')}}" class="nav-link">
-                  <i class="nav-icon fas fa-database"></i>
+                  <i class="fas fa-user-friends nav-icon"></i>
                   <p>Status Pernikahan</p>
                 </a>
               </li>
@@ -150,13 +150,13 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{url('dashboard/management/loker/belum-ditinjau')}}" class="nav-link">
-                  <i class="nav-icon fas fa-database"></i>
+                  <i class="nav-icon fas fa-stopwatch"></i>
                   <p>Belum Ditinjau</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{url('dashboard/management/loker/sudah-ditinjau')}}" class="nav-link">
-                  <i class="nav-icon fas fa-database"></i>
+                  <i class="nav-icon fas fa-check-circle"></i>
                   <p>Sudah Ditinjau</p>
                 </a>
               </li>
@@ -191,13 +191,13 @@
               @endrole
               <li class="nav-item">
                 <a href="{{route('users.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon fas fa-user"></i>
                   <p>User</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('companies.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon fas fa-user-tie"></i>
                   <p>Perusahaan</p>
                 </a>
               </li>
@@ -246,7 +246,7 @@
           </li>
           <li class="nav-item">
             <a href="{{route('pelamar.index')}}" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="nav-icon fas fa-balance-scale"></i>
               <p>
                 Pelamar
               </p>

@@ -42,7 +42,7 @@
               <!-- /.card-body -->
             </div>
             <div class="row">
-              <div class="col-md">
+              <div class="col-md-5">
                 <div class="card card-success">
                   <div class="card-header">
                     <h3 class="card-title">Contact</h3>
@@ -58,7 +58,7 @@
                   <!-- /.card-body -->
                 </div>
               </div>
-              <div class="col-md">
+              <div class="col-md-4">
                 <div class="card card-danger">
                     <div class="card-header">
                       <h3 class="card-title">Social Media</h3>
@@ -75,9 +75,9 @@
                     <!-- /.card-body -->
                 </div>
               </div>
-              <div class="col-md">
+              <div class="col-md-3">
                 
-              <a class="btn btn-outline-primary" href="{{route('profile-perusahaan.edit',$company->id)}}">EDIT PROFILE PERUSAHAAN</a>
+              <a class="btn btn-outline-primary" href="{{route('profile-perusahaan.edit',$company->user_id)}}">EDIT PROFILE</a>
               <br><br>
               </div>
             </div>

@@ -140,7 +140,8 @@
                         <input type="text" class="form-control" name="instagram" value="{{$company->instagram}}"></input>
                     </div>
                     <div class="form-group mt-3">
-                        <button class="btn btn-primary" type="submit">Simpan</button>
+                        <button class="btn btn-primary" type="submit"><i class="fas fa-save"></i> Simpan</button>
+                        <a href="/profile-perusahaan" class="btn btn-secondary"><i class="fas fa-caret-left"></i> Kembali</a>
                     </div>
                 </form>
               </div>
