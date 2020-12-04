@@ -42,9 +42,7 @@
                     </div>
                     <div class="panel-feet">
 
-                        <ul class="list-unstyled hidden-xs ">
-                            <li class="text-dark deskripsi">{!! substr($post->deskripsi,0,300) !!}</li>
-                        </ul>
+                        <!-- <p>{!! substr($post->deskripsi,0,300) !!}</p> -->
                         
                         <ul class="list-unstyled">
                             <li class="badge badge-primary">
@@ -105,7 +103,7 @@
             <aside class="fixed fixed-3 bg-success">
                 <h4>TIM KREATIF SMART IDUKA</h4>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. S?</p>
-                <img src="{{asset('frontend/img/KKSI/LOGO KKSI 5 BENDERA KECIL Remake.png')}}" alt="">
+                <img src="{{asset('frontend/img/KKSI/KKSI5.png')}}" alt="">
             </aside>
 		</div> 
 	</div>

@@ -113,20 +113,20 @@ div.panel h3, div.panel h2{
 } div.panel h3{
     font-size: 15px;
     padding-bottom: 10px;
-} div.panel .company-name span{
 }
 
 .panel-feet{
     padding-left: 20px;
     position: relative;
+    overflow: hidden;
 }
 
 .panel ul li{
-    display: inline-block;
     margin-right: 10px;
-} li.deskripsi{
-    width: 80%;
+} p{
+    width: 80% !important;
     margin-bottom: 20px;
+    position: relative;
     font-size: 14px;
 }
     
