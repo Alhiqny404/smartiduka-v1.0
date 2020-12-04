@@ -194,7 +194,7 @@
                             <h3>smart iduka</h3>
                         </div>
                         <p>Ketahui semua tentang Smart IDUKA penampung lowongan pekrjaan seluruh Indonesia</p>
-                        <a href="profile/profile.html" class="btn btn-outline-success text-center">SELENGKAPNYA</a>
+                        <a href="#" class="btn btn-outline-success text-center">SELENGKAPNYA</a>
                    </div>
                     <div class="card-contact">
                         <div class="contact-header">
@@ -215,7 +215,7 @@
                             <h3>Company</h3>
                         </div>
                         <p>Ketahui Company Profile kami, dari mulai lokasi perusahaan serta sosial media kami</p>
-                        <a href="profile/gallery.html" class="btn btn-outline-danger mt-auto">SELENGKAPNYA</a>
+                        <a href="#" class="btn btn-outline-danger mt-auto">SELENGKAPNYA</a>
                     </div>
                 </div>
             </div>

@@ -64,7 +64,7 @@ class CompaniesController extends Controller
 
         $user->profileCompany()->save(new profileCompany);
 
-        return redirect()->route('companies.index');
+        return redirect()->route('companies.index')->with('success','data berhasil ditambahkan');
     }
 
     /**
@@ -124,7 +124,7 @@ class CompaniesController extends Controller
             $user->update(['password' => Hash::make($request->password)]);
         }
         
-        return redirect()->route('companies.index');
+        return redirect()->route('companies.index')->with('success','Data Berhasil Diupdate');
         
         
     }
@@ -137,7 +137,8 @@ class CompaniesController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return redirect()->back()->with('delete','Data Berhasil Dihapus');
+        User::where('id',$id)->delete();
+        profileCompany::where('user_id',$id)->delete();
+        return redirect()->back()->with('success','Data Berhasil Dihapus');
     }
 }

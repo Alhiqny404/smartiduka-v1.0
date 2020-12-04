@@ -1,8 +1,8 @@
 @extends('layouts.adminlte')
 
-@section('title','Kategori')
+@section('title','Edit User')
 
-@section('nama_halaman','management Loker')
+@section('nama_halaman','Mengedit User')
 
 
 @section('content')
@@ -14,7 +14,7 @@
 
 <div class="card card-primary card-outline">
       <div class="card-header">
-        <h3 class="card-title"><i class="fas fa-edit"></i> Edit Perusahaan Dengan id </h3>
+        <h3 class="card-title"><i class="fas fa-edit"></i> Edit User Pencari Kerja</h3>
       </div>
       <div class="card-body">
           <form class="form" action="{{route('users.update',$user->id)}}" method="POST">

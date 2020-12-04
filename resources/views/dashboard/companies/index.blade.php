@@ -35,11 +35,10 @@
           <td>{{$company->email}}</td>
           <td>{{$company->password}}</td>
           <td>
+            <a href="#" class="btn btn-info btn-sm kosong"><i class="fas fa-eye"></i></a>
             <a href="{{route('companies.edit',$company->id)}}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-            <a class="btn btn-danger btn-sm"
-              onclick="event.preventDefault();
-               document.getElementById('hapus-admin').submit();"><i class="fas fa-trash"></i></a>
-                <form id="hapus-admin" action="{{ route('companies.destroy',$company->id) }}" method="POST" class="d-none">
+            <a class="btn btn-danger btn-sm delete"><i class="fas fa-trash"></i></a>
+                <form action="{{ route('companies.destroy',$company->id) }}" method="POST" class="d-none form-delete">
             @csrf
             @method('delete')
         </form>
@@ -75,9 +74,11 @@
     $('.table').DataTable();
   });
 
+</script>
 
+<script type="text/javascript">
 
-  // SWAL DI KANAN ATAS
+// SWAL DI KANAN ATAS
 const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -102,7 +103,7 @@ const Toast = Swal.mixin({
 $('.kosong').click(function() {
       Toast.fire({
     icon: 'warning',
-    title: 'Status Postingan masih dalam Peninjauan Admin'
+    title: 'Fitur masih dalam pengembangan'
   });
 });
 
@@ -113,8 +114,8 @@ $('.delete').click(function()
   var text = $(this).attr('text');
 
   Swal.fire({
-  title: title,
-  text:text,
+  title: "Menghapus user",
+  text:"User Ini akan dihapus dari database Secara Permanen!",
   icon: 'warning',
   showCancelButton: true,
   confirmButtonColor: '#3085d6',
@@ -126,7 +127,8 @@ $('.delete').click(function()
   }
 });
 });
-</script>  
+
+</script> 
 
 
 @endsection

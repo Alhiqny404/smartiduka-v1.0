@@ -1,7 +1,7 @@
 
 @extends('layouts.adminlte')
 
-@section('title','Dashboard')
+@section('title','Edit Profile Perusahaan')
 
 @section('content')
 

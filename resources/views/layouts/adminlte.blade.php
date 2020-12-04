@@ -7,6 +7,8 @@
 
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="icon" href="{{asset('frontend/img/KKSI/logo-pertiwi-removebg.png')}}">
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -63,7 +65,7 @@
   <aside class="main-sidebar sidebar-dark-navy elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="{{asset('AdminLte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{asset('frontend/img/KKSI/Bendera Smart School remake.png')}}" alt="Smart School Logo" class="brand-image" style="opacity: .8">
       <span class="brand-text font-weight-light">SMART IDUKA</span>
     </a>
 
@@ -111,7 +113,7 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users-cog"></i>
+              <i class="nav-icon fas fa-database"></i>
               <p>
                 Data Master
                 <i class="fas fa-angle-left right"></i>
@@ -141,9 +143,9 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users-cog"></i>
+              <i class="nav-icon fas fa-database"></i>
               <p>
-                Data Loker
+                Management Loker
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -167,7 +169,6 @@
               <i class="nav-icon fas fa-database"></i>
               <p>
                 Data Pelamar
-                
               </p>
             </a>
           </li>
@@ -184,7 +185,7 @@
               @role('super_admin')
               <li class="nav-item">
                 <a href="{{route('admins.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="nav-icon fas fa-user-cog"></i>
                   <p>Admin</p>
                 </a>
               </li>
@@ -203,7 +204,14 @@
               </li>
             </ul>
           </li>
-          
+          <li class="nav-item">
+            <a href="{{route('pesan')}}" class="nav-link">
+            <i class="nav-icon far fa-comments"></i>
+              <p>
+                Pesan
+              </p>
+            </a>
+          </li>
           @endhasrole
 
 
@@ -252,43 +260,19 @@
               </p>
             </a>
           </li>
-          {{--<li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-database"></i>
-              <p>
-                Management Pelamar
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('pelamar.index')}}" class="nav-link">
-                  <i class="fas fa-stopwatch nav-icon"></i>
-                  <p>Belum Diproses</p>
-                  @if(countPelamarPendingInCompany() > 0)
-                  <span class="badge badge-info right">{{countPelamarPendingInCompany()}}</span>
-                  @endif
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('pelamar.gagal')}}" class="nav-link">
-                  <i class="fas fa-times nav-icon"></i>
-                  <p>lamaran gagal</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('pelamar.lolos')}}" class="nav-link">
-                  <i class="fas fa-check nav-icon"></i>
-                  <p>lamaran lolos</p>
-                </a>
-              </li>
-            </ul>
-          </li> --}}
           <li class="nav-item">
             <a href="{{url('management/perlamar/interview')}}" class="nav-link">
               <i class="fas fa-calendar nav-icon"></i>
               <p>
                 jadwal Inteview
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('pesan')}}" class="nav-link">
+            <i class="nav-icon far fa-comments"></i>
+              <p>
+                Pesan
               </p>
             </a>
           </li>
@@ -318,9 +302,9 @@
               </li>
               @endrole
 
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-id-card-alt nav-icon"></i>
+              <li class="nav-item kosong">
+                <a href="#" class="nav-link kosong">
+                  <i class="fas fa-id-card-alt nav-icon kosong"></i>
                   <p>Pengaturan Akun</p>
                 </a>
               </li>

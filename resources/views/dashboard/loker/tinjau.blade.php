@@ -1,6 +1,6 @@
 @extends('layouts.adminlte')
 
-@section('title','Kategori')
+@section('title','Tinjau Loker')
 
 @section('nama_halaman','')
 

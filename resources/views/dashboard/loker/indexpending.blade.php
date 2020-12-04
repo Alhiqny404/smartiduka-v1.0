@@ -1,6 +1,6 @@
 @extends('layouts.adminlte')
 
-@section('title','Kategori')
+@section('title','Loker Belum Ditinjau')
 
 @section('nama_halaman','management Loker')
 

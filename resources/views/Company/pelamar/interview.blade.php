@@ -35,19 +35,19 @@
               <input type="hidden" name="user_id" value="{{$pelamar->user->id}}">
           <div class="form-group">
             <label>Tempat (alamat lengkap dan tempat bertemu)</label>
-              <input type="text" name="tempat" class="form-control">
+              <input required type="text" name="tempat" class="form-control">
           </div>
           <div class="row">
             <div class="col">
               <div class="form-group">
                 <label>Tanggal</label>
-                <input type="date" name="tanggal" class="form-control">
+                <input required type="date" name="tanggal" class="form-control">
               </div>
             </div>
             <div class="col">
               <div class="form-group">
                 <label>Waktu</label>
-                <input type="time" name="waktu" class="form-control">
+                <input required type="time" name="waktu" class="form-control">
               </div>
             </div>
           </div>

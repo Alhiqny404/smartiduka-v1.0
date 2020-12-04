@@ -68,7 +68,7 @@ Route::get('/lowongan-kerja/detail/{slug}',
 Route::get('/postingan/detail/{slug}',
 	[HomeController::class,'detailLoker2'])->name('detail.lowongan-kerja2');
 Route::post('/lowongan-kerja/detail/{id}',
-	[PelamarController::class,'store'])->name('lowongan-kerja.melamar');
+	[PelamarController::class,'store'])->name('lowongan-kerja.melamar')->middleware('beforeapply');
 Route::get('/lowongan-kerja/detail/{id}/hapus',
 	[PelamarController::class,'destroy'])->name('lowongan-kerja.hapus');
 Route::post('lowongan-kerja/simpan',[SimpanLokerController::class, 'create'])->name('simpan.loker'); 
@@ -118,7 +118,7 @@ Route::post('/dashboard/management/pelamar',[ManagementLokerController::class,'t
 Route::middleware(['checkrole:company'])->group(function () {
 Route::get('/dashboard/perusahaan', [HomeController::class, 'company'])->name('company');
 Route::resource('profile-perusahaan',ProfileCompanyController::class);
-Route::resource('management/lowongan-kerja',PostLokerController::class);
+Route::resource('management/lowongan-kerja',PostLokerController::class)->middleware('beforeaddpost');
 Route::get('management/perlamar',[PelamarController::class,'dataPelamar'])
 		->name('pelamar.index');
 Route::get('management/perlamar/lolos',[PelamarController::class,'lolos'])
@@ -173,4 +173,6 @@ Route::post('/user/upload/pasfoto/{id}',[UploadsController::class,'PasfotoUp'])-
 
 
 
-Route::get('/send-email',[MailController::class,'sendEmail']);
+// MASIH DALAM PENGEMBANGAN DAN RENCARA
+Route::view('/dashboard/pesan','pages.pesan1')->name('pesan');
+Route::view('/user/pesan','pages.pesan')->name('pesan.user');

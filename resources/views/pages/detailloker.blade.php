@@ -123,7 +123,12 @@ const Toast = Swal.mixin({
 	}
 });
 
-
+@if(Session::has('warning'))
+    Toast.fire({
+    icon: 'warning',
+    title: "{{Session('warning')}}"
+    });
+@endif
 
 @if(Session::has('success'))
 	Toast.fire({

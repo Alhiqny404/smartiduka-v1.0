@@ -20,7 +20,7 @@
         <table class="table table-bordered table-hover table-sm data-table table-striped">
           <thead class="table-primary">
             <tr>
-                <th>No</th>
+                <th>Id</th>
                 <th>Nama Kategori</th>
                 <th>Action</th>
             </tr>
@@ -111,7 +111,8 @@
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
-        ]
+        ],
+        "order": [[ 0, "asc" ]]
     });
     $('#tambahkategori').click(function () {
         $('#saveBtn').val("buat kategori");

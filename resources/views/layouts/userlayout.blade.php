@@ -7,6 +7,8 @@
 
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="icon" href="{{asset('frontend/img/KKSI/logo-pertiwi-removebg.png')}}">
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -63,7 +65,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4 bg-dark">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="{{asset('AdminLte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{asset('frontend/img/KKSI/Bendera Smart School remake.png')}}" alt="Smart School Logo" class="brand-image" style="opacity: .8">
       <span class="brand-text font-weight-light">SMART IDUKA</span>
     </a>
 
@@ -147,7 +149,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('pesan.user')}}" class="nav-link">
             <i class="nav-icon far fa-comments"></i>
               <p>
                 Pesan
@@ -172,7 +174,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link kosong">
                   <i class="fas fa-user-circle nav-icon"></i>
                   <p>My Akun</p>
                 </a>

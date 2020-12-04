@@ -60,7 +60,7 @@ class AdminsController extends Controller
                 
         $user->assignRole('admin');
 
-        return redirect()->route('admins.index');
+        return redirect()->route('admins.index')->with('success','data berhasil ditambahkan');
     }
 
     /**
@@ -120,7 +120,7 @@ class AdminsController extends Controller
             $user->update(['password' => Hash::make($request->password)]);
         }
         
-        return redirect()->route('admins.index');
+        return redirect()->route('admins.index')->with('success','Data Berhasil Diupdate');
         
         
     }
@@ -133,7 +133,7 @@ class AdminsController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return redirect()->back()->with('delete','Data Berhasil Dihapus');
+        User::where('id',$id)->delete();
+        return redirect()->back()->with('success','Data Berhasil Dihapus');
     }
 }

@@ -11,6 +11,8 @@ use App\Models\ProfileCompany;
 use App\Models\Interview;
 use App\Models\PostLoker;
 use App\Mail\NotifMelamar;
+use App\Mail\GagalMelamar;
+use App\Mail\lolosMelamar;
 use DataTables;
 use Carbon\Carbon;
 
@@ -192,7 +194,37 @@ class PelamarController extends Controller
     {
         Pelamar::find($id)->update(['status' => $request->status]);
 
-        return redirect()->back();
+
+
+        $pelamar = Pelamar::where('id',$id)->first()->user->profile;
+        $perusahaan = Pelamar::where('id',$id)->first()->company;
+        $post = Pelamar::where('id',$id)->first()->post;
+
+        $body = [
+                'name' => $pelamar->name,
+                'name_company' => $perusahaan->name,
+                'title_post' => $post->title,
+                'email_company' => $perusahaan->email_person,
+                'contact_company' => $perusahaan->contact_person,
+                'tempat' => $request->tempat,
+                'tanggal' => $request->tanggal,
+                'waktu' => $request->waktu,
+                'deskripsi' => $request->deskripsi
+            ];
+
+            if($request->status == 'failed')
+            {
+                 \Mail::to($pelamar->email)->send(new GagalMelamar($body));
+            }
+            if($request->status == 'success')
+            {
+                 \Mail::to($pelamar->email)->send(new lolosMelamar($body));
+            }
+           
+
+
+
+        return redirect()->back()->with('success','Telah Mengambil Keputusan');
 
     // PENJADWALAN INTERVIEW
     }public function aturInterview($id)
@@ -204,7 +236,14 @@ class PelamarController extends Controller
     // TOLAK LAMARAN
     public function tolakLamaran($id)
     {
-        Pelamar::find($id)->update(['status'=>'failed']);
+        // Pelamar::find($id)->update(['status'=>'failed']);
+
+           return $pelamar = Pelamar::where('id',$id)->first();
+            // $perusahaan = Pelamar::where('id',$id)->first()->company;
+            // $post = Pelamar::where('id',$id)->first()->post;
+            
+
+        \Mail::to($pelamar->email)->send(new NotifInterview($body));
 
         return redirect()->back();
     }
@@ -214,6 +253,7 @@ class PelamarController extends Controller
     {
         $company_id = auth()->user()->ProfileCompany->id;
         $pelamar = Pelamar::where('company_id',$company_id)->where('status','success')->get();
+
         return view('company.pelamar.lolos',compact('pelamar'));
     }
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Uploads;
 use DataTables;
 
 
@@ -65,7 +66,7 @@ class UsersController extends Controller
         $user->Profile()->save(new Profile);
         $user->Uploads()->save(new Uploads);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success','data berhasil ditambahkan');
     }
 
     /**
@@ -125,7 +126,7 @@ class UsersController extends Controller
             $user->update(['password' => Hash::make($request->password)]);
         }
         
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success','Data Berhasil Diupdate');
         
         
     }
@@ -138,7 +139,9 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return redirect()->back()->with('delete','Data Berhasil Dihapus');
+        User::where('id',$id)->delete();
+        Profile::where('user_id',$id)->delete();
+        Uploads::where('user_id',$id)->delete();
+        return redirect()->back()->with('success','Data Berhasil Dihapus');
     }
 }

@@ -37,7 +37,7 @@
                 </div>
               </div>
               <div class="card-body" style="display: block;">
-                <p>{{$company->deskripsi}}</p>
+                <p>{!!$company->deskripsi!!}</p>
               </div>
               <!-- /.card-body -->
             </div>

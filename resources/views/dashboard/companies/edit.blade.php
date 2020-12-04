@@ -1,8 +1,8 @@
 @extends('layouts.adminlte')
 
-@section('title','Kategori')
+@section('title','Edit Perusaan')
 
-@section('nama_halaman','management Loker')
+@section('nama_halaman','Mengedit Perusahaan')
 
 
 @section('content')

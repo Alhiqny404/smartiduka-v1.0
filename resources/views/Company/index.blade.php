@@ -21,7 +21,7 @@
         <div class="icon">
           <i class="ion ion-person-add"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="#" class="small-box-footer kosong">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <div class="col-lg-3 col-3">
@@ -35,7 +35,7 @@
         <div class="icon">
           <i class="ion ion-person-add"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="#" class="small-box-footer kosong">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <div class="col-lg-3 col-3">
@@ -49,7 +49,7 @@
         <div class="icon">
           <i class="ion ion-person-add"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="#" class="small-box-footer kosong">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
     <div class="col-lg-3 col-3">
@@ -63,7 +63,7 @@
         <div class="icon">
           <i class="ion ion-person-add"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        <a href="#" class="small-box-footer kosong">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
     </div>
 
@@ -82,7 +82,79 @@
     	</div>
   	</div>
 
-	<script>
+	
+</section>
+
+
+@endsection
+
+@section('js')
+
+<script type="text/javascript">
+	// SWAL DI KANAN ATAS
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 4000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+});
+
+
+
+@if(Session::has('success'))
+    Toast.fire({
+    icon: 'success',
+    title: "{{Session('success')}}"
+    });
+@endif
+
+$('.kosong').click(function() {
+      Toast.fire({
+    icon: 'warning',
+    title: 'Fitur Masih Dalam Pengembangan'
+  });
+});
+
+@if(Session::has('warning'))
+    Toast.fire({
+    icon: 'warning',
+    title: "{{Session('warning')}}"
+    });
+@endif
+
+
+$('.delete').click(function()
+{
+  var title = $(this).attr('title');
+  var text = $(this).attr('text');
+
+  Swal.fire({
+  title: title,
+  text:text,
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    $('.form-delete').submit();
+  }
+});
+});
+</script>
+
+
+
+
+
+
+<script>
 		var ctx = document.getElementById("myChart").getContext('2d');
 		var myChart = new Chart(ctx, {
 			type: 'bar',
@@ -154,7 +226,5 @@
 			}
 		});
 	</script>
-</section>
-
 
 @endsection

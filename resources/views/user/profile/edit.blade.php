@@ -10,7 +10,7 @@
 @endsection
 
 
-@section('title','Dashboard')
+@section('title','Edit Profile')
 
 
 
@@ -47,6 +47,20 @@
                             <div class="form-group">
                         <label>Tanggal Lahir</label>
                         <input  disabled=""type="date" class="form-control" name="tgl_lahir" value="{{$profile->tgl_lahir}}"></input>
+                    </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Tinggi Badan</label>
+                                <input disabled="" type="text" class="form-control" name="tg_badan" value="{{$profile->tg_badan}}"></input>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                        <label>Berat Badan</label>
+                        <input  disabled=""type="text" class="form-control" name="brt_badan" value="{{$profile->brt_badan}}"></input>
                     </div>
                         </div>
                     </div>
@@ -94,8 +108,12 @@
                         <input disabled="" type="text" class="form-control" name="website" value="{{$profile->website}}"></input>
                     </div>
                     <div class="from-group">
-                        <label>Riwayat Pendidikan</label>
-                        <textarea disabled="" class="form-control" name="pendidikan">{{$profile->pendidikan}}</textarea>
+                        <label>Pendidikan Terakhir</label>
+                        <input disabled="" type="text" class="form-control" name="pendidikan" value="{{$profile->pendidikan}}"></input>
+                    </div>
+                    <div class="from-group">
+                        <label>Penghargaan Terbesar</label>
+                        <input type="text" class="form-control" name="penghargaan" value="{{$profile->penghargaan}}"></input>
                     </div>
                     <div class="from-group">
                         <label>Pengalaman Kerja</label>
@@ -131,15 +149,29 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label>Kota Lahir</label>
-                                <input type="text" class="form-control" name="kota_lahir" value="{{$profile->kota_lahir}}"></input>
+                            <label>Kota Lahir</label>
+                            <input type="text" class="form-control" name="kota_lahir" value="{{$profile->kota_lahir}}"></input>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
-                        <label>Tanggal Lahir</label>
-                        <input type="date" class="form-control" name="tgl_lahir" value="$profile->tgl_lahir"></input>
+                            <label>Tanggal Lahir</label>
+                            <input type="date" class="form-control" name="tgl_lahir" value="{{$profile->tgl_lahir}}"></input>
+                            </div>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                            <label>Tinggi Badan</label>
+                            <input type="text" class="form-control" name="tg_badan" value="{{$profile->tg_badan}}"></input>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                            <label>Berat Badan</label>
+                            <input type="text" class="form-control" name="brt_badan" value="{{$profile->brt_badan}}"></input>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -159,7 +191,7 @@
                         <select class="form-control" name="status_nikah">
                             <option value="">Pilih status Pernikahan</option>
                             @foreach(status_nikah() as $status)
-                            <option value="{{$status->name}}">{{$status->name}}</option>
+                            <option value="{{$status->name}}"@if($profile->status_nikah == $status->name) selected @endif>{{$status->name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -186,11 +218,15 @@
                         <input type="text" class="form-control" name="website" value="{{$profile->website}}"></input>
                     </div>
                     <div class="from-group">
-                        <label>Riwayat Pendidikan</label>
-                        <textarea class="form-control" name="pendidikan">{{$profile->pendidikan}}</textarea>
+                        <label>Pendidikan Terakhir</label>
+                        <input type="text" class="form-control" name="pendidikan" value="{{$profile->pendidikan}}"></input>
                     </div>
                     <div class="from-group">
-                        <label>Pengalaman Kerja</label>
+                        <label>Penghargaan Terbesar</label>
+                        <input type="text" class="form-control" name="penghargaan" value="{{$profile->penghargaan}}"></input>
+                    </div>
+                    <div class="from-group">
+                        <label>Pengalaman Kerja</label> 
                         <textarea class="form-control" name="pengalaman">{{$profile->pengalaman}}</textarea>
                     </div>
                     <div class="from-group">

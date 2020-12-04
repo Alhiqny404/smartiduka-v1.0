@@ -56,8 +56,7 @@
                             <i class="fas fa-dollar-sign"></i>
                                 </i><span>IDR {{ $post->min_gaji }} - {{ $post->max_gaji }}</span>
                             </li>
-                            <li class="badge badge-danger">
-                            <i class="fas fa-dollar-sign"></i><span class="job-date-text text-muted text-white">{{ $post->created_at->diffForHumans() }}</span>
+                            <li class="badge badge-danger"><span class="job-date-text text-muted text-white">{{$post->created_at->diffForHumans()}}</span>
                             </li>
                         </ul>
 
@@ -148,7 +147,7 @@ const Toast = Swal.mixin({
 $('.kosong').click(function() {
       Toast.fire({
     icon: 'warning',
-    title: 'Status Postingan masih dalam Peninjauan Admin'
+    title: 'Fitur Ini Masih dalam pengembangan'
   });
 });
 
